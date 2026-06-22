@@ -7,6 +7,18 @@ cls
 :: HP 12C REVOLUCIONÁRIA - Funções Exclusivas
 :: Desenvolvida para uso offline
 
+:: Função auxiliar para calcular potência (base^expoente)
+:potencia
+set /a resultado=1
+set /a i=1
+:loop_potencia
+if %i% GTR %2 goto fim_potencia
+set /a resultado=resultado*%1
+set /a i=i+1
+goto loop_potencia
+:fim_potencia
+exit /b
+
 :menu
 cls
 echo.
@@ -170,7 +182,8 @@ echo ╚════════════════════════
 set /p principal="Capital inicial (P): "
 set /p taxa="Taxa de juros mensal (i) %%: "
 set /p periodos="Número de períodos (n): "
-set /a montante=principal*(100+taxa)**periodos/100
+call :potencia (100+taxa) periodos
+set /a montante=principal*resultado/100
 echo.
 echo Montante Final: %montante%
 echo.
@@ -185,7 +198,8 @@ echo ╚════════════════════════
 set /p vf="Valor Futuro (VF): "
 set /p taxa="Taxa de juros %%: "
 set /p periodos="Número de períodos: "
-set /a vp=vf/((100+taxa)**periodos/100)
+call :potencia (100+taxa) periodos
+set /a vp=vf*100/resultado
 echo.
 echo Valor Presente: %vp%
 echo.
@@ -200,7 +214,8 @@ echo ╚════════════════════════
 set /p vp="Valor Presente (VP): "
 set /p taxa="Taxa de juros %%: "
 set /p periodos="Número de períodos: "
-set /a vf=vp*(100+taxa)**periodos/100
+call :potencia (100+taxa) periodos
+set /a vf=vp*resultado/100
 echo.
 echo Valor Futuro: %vf%
 echo.
