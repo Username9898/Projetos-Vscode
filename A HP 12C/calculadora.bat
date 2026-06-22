@@ -340,7 +340,7 @@ echo ╔════════════════════════
 echo ║    CONVERSOR DE MOEDAS (OFFLINE)      ║
 echo ╚═══════════════════════════════════════╝
 echo.
-echo Moedas disponíveis (Taxas fixas em BRL):
+echo Moedas disponiveis (Taxas fixas em BRL):
 echo  1. USD - Dolar Americano (1 USD = 5,12)
 echo  2. EUR - Euro (1 EUR = 5,60)
 echo  3. GBP - Libra Esterlina (1 GBP = 6,50)
@@ -350,27 +350,42 @@ echo.
 set /p opcao="Escolha a moeda de origem (1-5): "
 set /p valor="Digite o valor a converter: "
 echo.
-if "%opcao%"=="1" (
-    set /a resultado=valor*100/512
-    echo %valor% USD = %resultado% BRL (aprox.)
-)
-if "%opcao%"=="2" (
-    set /a resultado=valor*100/560
-    echo %valor% EUR = %resultado% BRL (aprox.)
-)
-if "%opcao%"=="3" (
-    set /a resultado=valor*100/650
-    echo %valor% GBP = %resultado% BRL (aprox.)
-)
-if "%opcao%"=="4" (
-    set /a resultado=valor*5/1000
-    echo %valor% ARS = %resultado% BRL (aprox.)
-)
-if "%opcao%"=="5" (
-    set /a resultado=valor*71/100
-    echo %valor% CNY = %resultado% BRL (aprox.)
-)
-echo.
+if "%opcao%"=="1" goto conv_usd
+if "%opcao%"=="2" goto conv_eur
+if "%opcao%"=="3" goto conv_gbp
+if "%opcao%"=="4" goto conv_ars
+if "%opcao%"=="5" goto conv_cny
+echo Opcao invalida!
+pause
+goto menu
+
+:conv_usd
+set /a resultado=valor*512/100
+echo %valor% USD = %resultado% BRL (aprox.)
+pause
+goto menu
+
+:conv_eur
+set /a resultado=valor*560/100
+echo %valor% EUR = %resultado% BRL (aprox.)
+pause
+goto menu
+
+:conv_gbp
+set /a resultado=valor*650/100
+echo %valor% GBP = %resultado% BRL (aprox.)
+pause
+goto menu
+
+:conv_ars
+set /a resultado=valor*520/100000
+echo %valor% ARS = %resultado% BRL (aprox.)
+pause
+goto menu
+
+:conv_cny
+set /a resultado=valor*71/100
+echo %valor% CNY = %resultado% BRL (aprox.)
 pause
 goto menu
 
