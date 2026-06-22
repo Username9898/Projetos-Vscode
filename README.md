@@ -202,6 +202,6 @@ Roberto Ribeiro
 Desenvolvido como projeto pessoal de aprendizado e demonstração.
 
 ---
-Username9898
-RR98
+Username9898 - RR98
+
 **Última atualização:** Junho 2026
