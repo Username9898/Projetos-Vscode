@@ -520,23 +520,58 @@ echo ╔════════════════════════
 echo ║    CONVERSOR DE MOEDAS (OFFLINE)      ║
 echo ╚═══════════════════════════════════════╝
 echo.
-echo Moedas disponiveis (Taxas fixas em BRL):
-echo  1. USD - Dolar Americano (1 USD = 5,12)
-echo  2. EUR - Euro (1 EUR = 5,60)
-echo  3. GBP - Libra Esterlina (1 GBP = 6,50)
-echo  4. ARS - Peso Argentino (1000 ARS = 5,20)
-echo  5. CNY - Yuan Chines (1 CNY = 0,71)
+echo Moedas disponiveis (Taxas fixas):
+echo  1. BRL - Real Brasileiro
+echo  2. USD - Dolar Americano (1 USD = 5,12 BRL)
+echo  3. EUR - Euro (1 EUR = 5,60 BRL)
+echo  4. GBP - Libra Esterlina (1 GBP = 6,50 BRL)
+echo  5. ARS - Peso Argentino (1000 ARS = 5,20 BRL)
+echo  6. CNY - Yuan Chines (1 CNY = 0,71 BRL)
 echo.
-set /p opcao="Escolha a moeda de origem (1-5): "
+set /p origem="Escolha a moeda de ORIGEM (1-6): "
+set /p destino="Escolha a moeda de DESTINO (1-6): "
 set /p valor="Digite o valor a converter: "
 echo.
 set /a resultado=0
-if "%opcao%"=="1" set /a resultado=valor*512/100
-if "%opcao%"=="2" set /a resultado=valor*560/100
-if "%opcao%"=="3" set /a resultado=valor*650/100
-if "%opcao%"=="4" set /a resultado=valor*520/100000
-if "%opcao%"=="5" set /a resultado=valor*71/100
-echo Resultado: %resultado% BRL (aprox.)
+rem Origem BRL (1)
+if "%origem%"=="1" if "%destino%"=="2" set /a resultado=valor*512/100
+if "%origem%"=="1" if "%destino%"=="3" set /a resultado=valor*560/100
+if "%origem%"=="1" if "%destino%"=="4" set /a resultado=valor*650/100
+if "%origem%"=="1" if "%destino%"=="5" set /a resultado=valor*520/100000
+if "%origem%"=="1" if "%destino%"=="6" set /a resultado=valor*71/100
+rem Origem USD (2)
+if "%origem%"=="2" if "%destino%"=="1" set /a resultado=valor*100/512
+if "%origem%"=="2" if "%destino%"=="3" set /a resultado=valor*560/512
+if "%origem%"=="2" if "%destino%"=="4" set /a resultado=valor*650/512
+if "%origem%"=="2" if "%destino%"=="5" set /a resultado=valor*520/51200
+if "%origem%"=="2" if "%destino%"=="6" set /a resultado=valor*71*512/51200
+rem Origem EUR (3)
+if "%origem%"=="3" if "%destino%"=="1" set /a resultado=valor*100/560
+if "%origem%"=="3" if "%destino%"=="2" set /a resultado=valor*512/560
+if "%origem%"=="3" if "%destino%"=="4" set /a resultado=valor*650/560
+if "%origem%"=="3" if "%destino%"=="5" set /a resultado=valor*5600/52000
+if "%origem%"=="3" if "%destino%"=="6" set /a resultado=valor*71/100*560/100
+rem Origem GBP (4)
+if "%origem%"=="4" if "%destino%"=="1" set /a resultado=valor*100/650
+if "%origem%"=="4" if "%destino%"=="2" set /a resultado=valor*512/650
+if "%origem%"=="4" if "%destino%"=="3" set /a resultado=valor*560/650
+if "%origem%"=="4" if "%destino%"=="5" set /a resultado=valor*65000/52000
+if "%origem%"=="4" if "%destino%"=="6" set /a resultado=valor*71/100*650/100
+rem Origem ARS (5)
+if "%origem%"=="5" if "%destino%"=="1" set /a resultado=valor*520/5
+if "%origem%"=="5" if "%destino%"=="2" set /a resultado=valor*512/100*520/5
+if "%origem%"=="5" if "%destino%"=="3" set /a resultado=valor*560/100*520/5
+if "%origem%"=="5" if "%destino%"=="4" set /a resultado=valor*650/100*520/5
+if "%origem%"=="5" if "%destino%"=="6" set /a resultado=valor*71/100*520/5
+rem Origem CNY (6)
+if "%origem%"=="6" if "%destino%"=="1" set /a resultado=valor*100/71
+if "%origem%"=="6" if "%destino%"=="2" set /a resultado=valor*512/7100
+if "%origem%"=="6" if "%destino%"=="3" set /a resultado=valor*560/7100
+if "%origem%"=="6" if "%destino%"=="4" set /a resultado=valor*650/7100
+if "%origem%"=="6" if "%destino%"=="5" set /a resultado=valor*71/100*520/5
+
+set /a resultado_int=resultado
+echo Resultado: %resultado_int% (aprox.)
 echo.
 echo 1. Fazer outra conversao
 echo 2. Voltar ao Menu de Funcoes Revolucionarias
