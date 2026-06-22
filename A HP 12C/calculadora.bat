@@ -23,6 +23,8 @@ if "%op%"=="1" goto basicas
 if "%op%"=="2" goto financeiras
 if "%op%"=="3" goto revolucionarias
 if "%op%"=="0" goto sair
+echo Opcao invalida!
+pause
 goto inicio
 
 :basicas
@@ -43,6 +45,8 @@ if "%op%"=="2" goto subtracao
 if "%op%"=="3" goto multiplicacao
 if "%op%"=="4" goto divisao
 if "%op%"=="0" goto inicio
+echo Opcao invalida!
+pause
 goto basicas
 
 :financeiras
@@ -69,6 +73,8 @@ if "%op%"=="9" goto pmt
 if "%op%"=="10" goto tir
 if "%op%"=="11" goto vpl
 if "%op%"=="0" goto inicio
+echo Opcao invalida!
+pause
 goto financeiras
 
 :revolucionarias
@@ -97,6 +103,8 @@ if "%op%"=="17" goto cartao
 if "%op%"=="18" goto planejador
 if "%op%"=="19" goto emprestimo
 if "%op%"=="0" goto inicio
+echo Opcao invalida!
+pause
 goto revolucionarias
 
 :soma
@@ -163,6 +171,11 @@ echo ║             DIVISAO                  ║
 echo ╚═══════════════════════════════════════╝
 set /p a="Dividendo: "
 set /p b="Divisor: "
+if "%b%"=="0" (
+    echo Erro: divisao por zero!
+    pause
+    goto basicas
+)
 set /a r=a/b
 echo Resultado: %r%
 echo.
@@ -294,6 +307,11 @@ echo ╚════════════════════════
 set /p pv="Emprestimo: "
 set /p i="Juros mensal %%: "
 set /p n="Parcelas: "
+if "%n%"=="0" (
+    echo Erro: numero de parcelas invalido!
+    pause
+    goto financeiras
+)
 set /a p=pv/n
 set /a j=pv*i*n/100
 set /a t=pv+j
@@ -429,62 +447,41 @@ if "%origem%"=="%destino%" (
     goto conv_fim
 )
 
-rem Inicializa resultado
-set /a res=0
+if "%origem%"=="1" if "%destino%"=="2" set /a res=valor*512/100
+if "%origem%"=="1" if "%destino%"=="3" set /a res=valor*560/100
+if "%origem%"=="1" if "%destino%"=="4" set /a res=valor*650/100
+if "%origem%"=="1" if "%destino%"=="5" set /a res=valor*520/100000
+if "%origem%"=="1" if "%destino%"=="6" set /a res=valor*71/100
 
-rem Se origem for USD (2)
-if "%origem%"=="2" (
-    if "%destino%"=="1" set /a res=valor*512/100
-    if "%destino%"=="3" set /a res=valor*560/512
-    if "%destino%"=="4" set /a res=valor*650/512
-    if "%destino%"=="5" set /a res=valor*520/51200
-    if "%destino%"=="6" set /a res=valor*71*512/51200
-)
+if "%origem%"=="2" if "%destino%"=="1" set /a res=valor*100/512
+if "%origem%"=="2" if "%destino%"=="3" set /a res=valor*560/512
+if "%origem%"=="2" if "%destino%"=="4" set /a res=valor*650/512
+if "%origem%"=="2" if "%destino%"=="5" set /a res=valor*520/51200
+if "%origem%"=="2" if "%destino%"=="6" set /a res=valor*71*512/51200
 
-rem Se origem for EUR (3)
-if "%origem%"=="3" (
-    if "%destino%"=="1" set /a res=valor*560/100
-    if "%destino%"=="2" set /a res=valor*512/560
-    if "%destino%"=="4" set /a res=valor*650/560
-    if "%destino%"=="5" set /a res=valor*520/56/100
-    if "%destino%"=="6" set /a res=valor*71/100*560/100
-)
+if "%origem%"=="3" if "%destino%"=="1" set /a res=valor*100/560
+if "%origem%"=="3" if "%destino%"=="2" set /a res=valor*512/560
+if "%origem%"=="3" if "%destino%"=="4" set /a res=valor*650/560
+if "%origem%"=="3" if "%destino%"=="5" set /a res=valor*520/56000
+if "%origem%"=="3" if "%destino%"=="6" set /a res=valor*71*560/56000
 
-rem Se origem for GBP (4)
-if "%origem%"=="4" (
-    if "%destino%"=="1" set /a res=valor*650/100
-    if "%destino%"=="2" set /a res=valor*512/650
-    if "%destino%"=="3" set /a res=valor*560/650
-    if "%destino%"=="5" set /a res=valor*520/65/100
-    if "%destino%"=="6" set /a res=valor*71/100*650/100
-)
+if "%origem%"=="4" if "%destino%"=="1" set /a res=valor*100/650
+if "%origem%"=="4" if "%destino%"=="2" set /a res=valor*512/650
+if "%origem%"=="4" if "%destino%"=="3" set /a res=valor*560/650
+if "%origem%"=="4" if "%destino%"=="5" set /a res=valor*520/65000
+if "%origem%"=="4" if "%destino%"=="6" set /a res=valor*71*650/65000
 
-rem Se origem for ARS (5)
-if "%origem%"=="5" (
-    if "%destino%"=="1" set /a res=valor*52/10000
-    if "%destino%"=="2" set /a res=valor*512/100*52/10000
-    if "%destino%"=="3" set /a res=valor*560/100*52/10000
-    if "%destino%"=="4" set /a res=valor*650/100*52/10000
-    if "%destino%"=="6" set /a res=valor*71/100*52/10000
-)
+if "%origem%"=="5" if "%destino%"=="1" set /a res=valor*520/100000
+if "%origem%"=="5" if "%destino%"=="2" set /a res=valor*512/100*520/100000
+if "%origem%"=="5" if "%destino%"=="3" set /a res=valor*560/100*520/100000
+if "%origem%"=="5" if "%destino%"=="4" set /a res=valor*650/100*520/100000
+if "%origem%"=="5" if "%destino%"=="6" set /a res=valor*71/100*520/100000
 
-rem Se origem for CNY (6)
-if "%origem%"=="6" (
-    if "%destino%"=="1" set /a res=valor*71/100
-    if "%destino%"=="2" set /a res=valor*512/7100
-    if "%destino%"=="3" set /a res=valor*560/7100
-    if "%destino%"=="4" set /a res=valor*650/7100
-    if "%destino%"=="5" set /a res=valor*520/100*71/100
-)
-
-rem Se origem for BRL (1)
-if "%origem%"=="1" (
-    if "%destino%"=="2" set /a res=valor*512/100
-    if "%destino%"=="3" set /a res=valor*560/100
-    if "%destino%"=="4" set /a res=valor*650/100
-    if "%destino%"=="5" set /a res=valor*520/100000
-    if "%destino%"=="6" set /a res=valor*71/100
-)
+if "%origem%"=="6" if "%destino%"=="1" set /a res=valor*71/100
+if "%origem%"=="6" if "%destino%"=="2" set /a res=valor*512/7100
+if "%origem%"=="6" if "%destino%"=="3" set /a res=valor*560/7100
+if "%origem%"=="6" if "%destino%"=="4" set /a res=valor*650/7100
+if "%origem%"=="6" if "%destino%"=="5" set /a res=valor*520/100*71/100
 
 echo Resultado: %res%
 :conv_fim
@@ -616,6 +613,11 @@ echo ╚════════════════════════
 set /p val="Valor do emprestimo R$: "
 set /p i="Juros mensal %%: "
 set /p p="Parcelas: "
+if "%p%"=="0" (
+    echo Erro: numero de parcelas invalido!
+    pause
+    goto revolucionarias
+)
 set /a par=val/p
 set /a jt=val*i*p/100
 set /a tot=val+jt
@@ -638,5 +640,5 @@ echo.
 echo Obrigado por usar a HP 12C!
 echo Calculadora Financeira Revolucionaria
 echo.
-timeout /t 2 >nul
+pause
 exit
