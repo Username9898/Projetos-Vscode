@@ -1,4 +1,5 @@
 @echo off
+setlocal enabledelayedexpansion
 chcp 65001 >nul
 title HP 12C - Calculadora Financeira Revolucionaria
 color 0a
@@ -361,31 +362,31 @@ goto menu
 
 :conv_usd
 set /a resultado=valor*512/100
-echo %valor% USD = %resultado% BRL (aprox.)
+echo %valor% USD = !resultado! BRL (aprox.)
 pause
 goto menu
 
 :conv_eur
 set /a resultado=valor*560/100
-echo %valor% EUR = %resultado% BRL (aprox.)
+echo %valor% EUR = !resultado! BRL (aprox.)
 pause
 goto menu
 
 :conv_gbp
 set /a resultado=valor*650/100
-echo %valor% GBP = %resultado% BRL (aprox.)
+echo %valor% GBP = !resultado! BRL (aprox.)
 pause
 goto menu
 
 :conv_ars
 set /a resultado=valor*520/100000
-echo %valor% ARS = %resultado% BRL (aprox.)
+echo %valor% ARS = !resultado! BRL (aprox.)
 pause
 goto menu
 
 :conv_cny
 set /a resultado=valor*71/100
-echo %valor% CNY = %resultado% BRL (aprox.)
+echo %valor% CNY = !resultado! BRL (aprox.)
 pause
 goto menu
 
