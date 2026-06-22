@@ -197,9 +197,11 @@ cp .env.example .env
 Este projeto está sob a licença MIT.
 
 ## 👤 Autor
+Roberto Ribeiro
 
 Desenvolvido como projeto pessoal de aprendizado e demonstração.
 
 ---
-
+Username9898
+RR98
 **Última atualização:** Junho 2026
