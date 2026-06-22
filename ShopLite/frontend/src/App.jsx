@@ -1,0 +1,34 @@
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import ChatAI from './components/ChatAI';
+import Login from './components/Login';
+import Dashboard from './components/Dashboard';
+
+function App() {
+  return (
+    <Router>
+      <div className="app">
+        <nav className="navbar">
+          <div className="nav-brand">
+            <h1>🛒 ShopLite</h1>
+            <span>E-commerce Inteligente</span>
+          </div>
+          <div className="nav-links">
+            <Link to="/">Dashboard</Link>
+            <Link to="/chat">Assistente IA</Link>
+            <Link to="/login">Login</Link>
+          </div>
+        </nav>
+        <main className="container">
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/chat" element={<ChatAI />} />
+            <Route path="/login" element={<Login />} />
+          </Routes>
+        </main>
+      </div>
+    </Router>
+  );
+}
+
+export default App;

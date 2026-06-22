@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🤖 Agente IA RR98 - Dashboard</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <div id="app">
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fas fa-robot"></i>
+                <h2>Agente RR98</h2>
+                <span class="status online">Online</span>
+            </div>
+            <nav>
+                <a href="#" class="active" data-page="dashboard"><i class="fas fa-home"></i> Dashboard</a>
+                <a href="#" data-page="chat"><i class="fas fa-comments"></i> Chat IA</a>
+                <a href="#" data-page="whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                <a href="#" data-page="projects"><i class="fas fa-folder"></i> Projetos</a>
+                <a href="#" data-page="finance"><i class="fas fa-dollar-sign"></i> Financeiro</a>
+                <a href="#" data-page="monitor"><i class="fas fa-chart-line"></i> Monitor</a>
+                <a href="#" data-page="settings"><i class="fas fa-cog"></i> Config</a>
+            </nav>
+        </aside>
+
+        <main class="content">
+            <header>
+                <h1 id="pageTitle">Dashboard</h1>
+                <div class="header-info">
+                    <span id="uptime"><i class="fas fa-clock"></i> Online</span>
+                    <span id="liveStatus" class="live-badge"><i class="fas fa-circle"></i> LIVE</span>
+                </div>
+            </header>
+
+            <div id="pageContent">
+                <!-- Dashboard -->
+                <section id="page-dashboard" class="page active">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <i class="fas fa-robot"></i>
+                            <h3>Agente RR98</h3>
+                            <p>Inteligência Universal Ativa</p>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-comments"></i>
+                            <h3 id="statMessages">0</h3>
+                            <p>Mensagens</p>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-dollar-sign"></i>
+                            <h3 id="statRevenue">R$ 0</h3>
+                            <p>Receita Total</p>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-bug"></i>
+                            <h3 id="statBugFixes">0</h3>
+                            <p>Bugs Corrigidos</p>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-folder"></i>
+                            <h3>7</h3>
+                            <p>Projetos Ativos</p>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-check-circle"></i>
+                            <h3 id="statHealth">100%</h3>
+                            <p>Saúde do Sistema</p>
+                        </div>
+                    </div>
+
+                    <div class="quick-actions">
+                        <h2>Ações Rápidas</h2>
+                        <div class="actions-grid">
+                            <button onclick="sendMessage()" class="action-btn">
+                                <i class="fas fa-paper-plane"></i> Enviar Mensagem
+                            </button>
+                            <button onclick="scanSystem()" class="action-btn">
+                                <i class="fas fa-search"></i> Escanear Bugs
+                            </button>
+                            <button onclick="diagnoseSystem()" class="action-btn">
+                                <i class="fas fa-stethoscope"></i> Diagnóstico
+                            </button>
+                            <button onclick="optimizeSystem()" class="action-btn">
+                                <i class="fas fa-rocket"></i> Otimizar
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="logs-section">
+                        <h2>Registro de Atividades</h2>
+                        <div id="activityLog" class="log-container">
+                            <p class="log-empty">Sistema iniciado. Aguardando atividades...</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Chat -->
+                <section id="page-chat" class="page">
+                    <div class="chat-container">
+                        <div id="chatMessages" class="chat-messages"></div>
+                        <div class="chat-input">
+                            <select id="chatProject">
+                                <option value="">Projeto Geral</option>
+                                <option value="fincare">Fincare</option>
+                                <option value="shoplite">ShopLite</option>
+                                <option value="stockpro">StockPro</option>
+                                <option value="jobsboard">JobsBoard</option>
+                                <option value="kanbango">Kanbango</option>
+                            </select>
+                            <textarea id="chatPrompt" placeholder="Digite sua mensagem para o Agente RR98..." rows="2"></textarea>
+                            <button onclick="sendChat()"><i class="fas fa-send"></i> Enviar</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- WhatsApp -->
+                <section id="page-whatsapp" class="page">
+                    <div class="whats-panel">
+                        <div class="whats-contacts">
+                            <input type="text" id="contactSearch" placeholder="Buscar contato..." oninput="loadChats()">
+                            <div id="contactsList" class="contacts-list"></div>
+                        </div>
+                        <div class="whats-chat">
+                            <div id="whatsMessages" class="whats-messages">
+                                <p class="chat-placeholder">Selecione um contato ou inicie uma conversa</p>
+                            </div>
+                            <div class="whats-input">
+                                <input type="text" id="whatsContactInput" placeholder="Telefone do contato...">
+                                <textarea id="whatsMessageInput" placeholder="Digite sua mensagem..." rows="2"></textarea>
+                                <button onclick="sendWhatsApp()"><i class="fab fa-whatsapp"></i> Enviar</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Projetos -->
+                <section id="page-projects" class="page">
+                    <div id="projectsGrid" class="projects-grid"></div>
+                </section>
+
+                <!-- Financeiro -->
+                <section id="page-finance" class="page">
+                    <div class="finance-info">
+                        <div class="pix-card">
+                            <i class="fas fa-qrcode"></i>
+                            <h3>Chave PIX do Agente</h3>
+                            <p class="pix-key">046999732012</p>
+                            <button onclick="navigator.clipboard.writeText('046999732012')">Copiar Chave</button>
+                        </div>
+                        <div id="financeStats" class="finance-stats"></div>
+                        <div id="transactions" class="transactions-list"></div>
+                    </div>
+                </section>
+
+                <!-- Monitor -->
+                <section id="page-monitor" class="page">
+                    <div class="monitor-panel">
+                        <div id="monitorStats" class="monitor-stats"></div>
+                        <div id="monitorAlerts" class="monitor-alerts"></div>
+                    </div>
+                </section>
+
+                <!-- Config -->
+                <section id="page-settings" class="page">
+                    <div class="settings-panel">
+                        <h2>Configurações do Sistema</h2>
+                        <div class="setting-group">
+                            <label>Chave API Groq</label>
+                            <input type="password" id="groqKey" placeholder="gsk_..." value="">
+                            <small>Necessária para o funcionamento da IA</small>
+                        </div>
+                        <div class="setting-group">
+                            <label>Intervalo Auto-Correção (minutos)</label>
+                            <input type="number" id="fixInterval" value="30">
+                        </div>
+                        <div class="setting-group">
+                            <label>Notificações WhatsApp</label>
+                            <label class="switch">
+                                <input type="checkbox" id="whatsNotify" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <button onclick="saveSettings()" class="btn-primary">Salvar Configurações</button>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script src="/js/app.js"></script>
+</body>
+</html>

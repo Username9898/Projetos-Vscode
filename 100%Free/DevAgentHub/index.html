@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevAgent Hub - Painel de Controle</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h2><i class="fas fa-robot"></i> DevAgent Hub</h2>
+                <span class="version">v1.0.0</span>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active" data-page="dashboard">
+                    <i class="fas fa-th-large"></i> Dashboard
+                </a>
+                <a href="#" class="nav-item" data-page="projects">
+                    <i class="fas fa-folder"></i> Projetos
+                </a>
+                <a href="#" class="nav-item" data-page="tasks">
+                    <i class="fas fa-tasks"></i> Tarefas
+                </a>
+                <a href="#" class="nav-item" data-page="prompts">
+                    <i class="fas fa-comment"></i> Prompts
+                </a>
+                <a href="#" class="nav-item" data-page="docs">
+                    <i class="fas fa-book"></i> Documentação
+                </a>
+                <a href="#" class="nav-item" data-page="settings">
+                    <i class="fas fa-cog"></i> Configurações
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="connection-status" id="connStatus">
+                    <span class="status-dot offline"></span>
+                    <span id="statusText">Desconectado</span>
+                </div>
+                <small>100% Gratuito na Nuvem</small>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="topbar">
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="globalSearch" placeholder="Pesquisar em tudo...">
+                </div>
+                <div class="header-actions">
+                    <button class="btn btn-icon" id="refreshBtn" title="Atualizar">
+                        <i class="fas fa-sync-alt"></i>
+                    </button>
+                    <button class="btn btn-icon" id="exportBtn" title="Exportar Dados">
+                        <i class="fas fa-download"></i>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Dashboard -->
+                <section id="page-dashboard" class="page active">
+                    <div class="page-header">
+                        <h1>Dashboard</h1>
+                        <p>Bem-vindo ao seu hub de desenvolvimento</p>
+                    </div>
+                    <div class="stats-grid" id="statsGrid">
+                        <div class="stat-card" data-type="projects">
+                            <div class="stat-icon"><i class="fas fa-folder-open"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-number" id="statProjects">0</span>
+                                <span class="stat-label">Projetos Ativos</span>
+                            </div>
+                        </div>
+                        <div class="stat-card" data-type="tasks">
+                            <div class="stat-icon"><i class="fas fa-clipboard-list"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-number" id="statTasks">0</span>
+                                <span class="stat-label">Tarefas Pendentes</span>
+                            </div>
+                        </div>
+                        <div class="stat-card" data-type="prompts">
+                            <div class="stat-icon"><i class="fas fa-comment-dots"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-number" id="statPrompts">0</span>
+                                <span class="stat-label">Prompts Salvos</span>
+                            </div>
+                        </div>
+                        <div class="stat-card" data-type="docs">
+                            <div class="stat-icon"><i class="fas fa-file-alt"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-number" id="statDocs">0</span>
+                                <span class="stat-label">Documentos</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dashboard-grid">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-clock"></i> Últimas Atividades</h3>
+                            </div>
+                            <div class="card-body" id="recentActivity">
+                                <p class="empty-state">Nenhuma atividade recente</p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-star"></i> Ações Rápidas</h3>
+                            </div>
+                            <div class="card-body quick-actions">
+                                <button class="btn btn-primary" onclick="navigateTo('projects')">
+                                    <i class="fas fa-plus"></i> Novo Projeto
+                                </button>
+                                <button class="btn btn-success" onclick="navigateTo('tasks')">
+                                    <i class="fas fa-plus"></i> Nova Tarefa
+                                </button>
+                                <button class="btn btn-info" onclick="navigateTo('prompts')">
+                                    <i class="fas fa-plus"></i> Novo Prompt
+                                </button>
+                                <button class="btn btn-warning" onclick="openMasterPrompt()">
+                                    <i class="fas fa-copy"></i> Copiar Prompt Mestre
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Projects -->
+                <section id="page-projects" class="page">
+                    <div class="page-header">
+                        <h1>Projetos</h1>
+                        <button class="btn btn-primary" onclick="openProjectModal()">
+                            <i class="fas fa-plus"></i> Novo Projeto
+                        </button>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="table-filters">
+                                <input type="text" id="projectSearch" placeholder="Buscar projetos..." class="filter-input">
+                                <select id="projectStatusFilter" class="filter-select">
+                                    <option value="all">Todos os Status</option>
+                                    <option value="ativo">Ativo</option>
+                                    <option value="pausado">Pausado</option>
+                                    <option value="concluido">Concluído</option>
+                                    <option value="arquivado">Arquivado</option>
+                                </select>
+                            </div>
+                            <div class="table-container">
+                                <table id="projectsTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Nome</th>
+                                            <th>Descrição</th>
+                                            <th>Status</th>
+                                            <th>Tecnologias</th>
+                                            <th>Criado em</th>
+                                            <th>Ações</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="projectsBody">
+                                        <tr>
+                                            <td colspan="6" class="empty-state">Nenhum projeto cadastrado</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Tasks -->
+                <section id="page-tasks" class="page">
+                    <div class="page-header">
+                        <h1>Tarefas</h1>
+                        <button class="btn btn-primary" onclick="openTaskModal()">
+                            <i class="fas fa-plus"></i> Nova Tarefa
+                        </button>
+                    </div>
+                    <div class="kanban-board" id="kanbanBoard">
+                        <div class="kanban-column" data-status="todo">
+                            <div class="kanban-header">
+                                <h3><i class="fas fa-circle text-secondary"></i> A Fazer</h3>
+                                <span class="task-count" id="todoCount">0</span>
+                            </div>
+                            <div class="kanban-body" id="todoList">
+                                <p class="empty-state">Nenhuma tarefa</p>
+                            </div>
+                        </div>
+                        <div class="kanban-column" data-status="doing">
+                            <div class="kanban-header">
+                                <h3><i class="fas fa-circle text-warning"></i> Fazendo</h3>
+                                <span class="task-count" id="doingCount">0</span>
+                            </div>
+                            <div class="kanban-body" id="doingList">
+                                <p class="empty-state">Nenhuma tarefa</p>
+                            </div>
+                        </div>
+                        <div class="kanban-column" data-status="done">
+                            <div class="kanban-header">
+                                <h3><i class="fas fa-circle text-success"></i> Concluído</h3>
+                                <span class="task-count" id="doneCount">0</span>
+                            </div>
+                            <div class="kanban-body" id="doneList">
+                                <p class="empty-state">Nenhuma tarefa</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Prompts -->
+                <section id="page-prompts" class="page">
+                    <div class="page-header">
+                        <h1>Biblioteca de Prompts</h1>
+                        <button class="btn btn-primary" onclick="openPromptModal()">
+                            <i class="fas fa-plus"></i> Novo Prompt
+                        </button>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="table-filters">
+                                <input type="text" id="promptSearch" placeholder="Buscar prompts..." class="filter-input">
+                                <select id="promptCategoryFilter" class="filter-select">
+                                    <option value="all">Todas as Categorias</option>
+                                    <option value="desenvolvimento">Desenvolvimento</option>
+                                    <option value="arquitetura">Arquitetura</option>
+                                    <option value="banco-dados">Banco de Dados</option>
+                                    <option value="frontend">Frontend</option>
+                                    <option value="backend">Backend</option>
+                                    <option value="deploy">Deploy</option>
+                                </select>
+                            </div>
+                            <div class="prompts-grid" id="promptsGrid">
+                                <p class="empty-state">Nenhum prompt salvo</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Documentation -->
+                <section id="page-docs" class="page">
+                    <div class="page-header">
+                        <h1>Documentação</h1>
+                        <button class="btn btn-primary" onclick="openDocModal()">
+                            <i class="fas fa-plus"></i> Nova Documentação
+                        </button>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="table-filters">
+                                <input type="text" id="docSearch" placeholder="Buscar documentos..." class="filter-input">
+                                <select id="docTypeFilter" class="filter-select">
+                                    <option value="all">Todos os Tipos</option>
+                                    <option value="nota">Nota</option>
+                                    <option value="tutorial">Tutorial</option>
+                                    <option value="ideia">Ideia</option>
+                                    <option value="documentacao">Documentação</option>
+                                </select>
+                            </div>
+                            <div class="docs-grid" id="docsGrid">
+                                <p class="empty-state">Nenhum documento criado</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Settings -->
+                <section id="page-settings" class="page">
+                    <div class="page-header">
+                        <h1>Configurações</h1>
+                    </div>
+                    <div class="settings-grid">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-database"></i> Conexão Supabase</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label>URL do Supabase</label>
+                                    <input type="text" id="supabaseUrl" class="form-input" placeholder="https://seuprojeto.supabase.co">
+                                </div>
+                                <div class="form-group">
+                                    <label>Anon Key</label>
+                                    <input type="password" id="supabaseKey" class="form-input" placeholder="sua-chave-anon">
+                                </div>
+                                <button class="btn btn-primary" onclick="saveSupabaseConfig()">
+                                    <i class="fas fa-save"></i> Salvar & Conectar
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-palette"></i> Aparência</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label>Tema</label>
+                                    <select id="themeSelect" class="form-select" onchange="changeTheme(this.value)">
+                                        <option value="dark">Escuro</option>
+                                        <option value="light">Claro</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-file-export"></i> Exportar / Importar</h3>
+                            </div>
+                            <div class="card-body">
+                                <button class="btn btn-success" onclick="exportAllData()">
+                                    <i class="fas fa-file-export"></i> Exportar Todos os Dados
+                                </button>
+                                <button class="btn btn-info" onclick="document.getElementById('importFile').click()">
+                                    <i class="fas fa-file-import"></i> Importar Dados
+                                </button>
+                                <input type="file" id="importFile" accept=".json" style="display:none" onchange="importData(event)">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modals -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal" id="modalContainer">
+            <div class="modal-header">
+                <h3 id="modalTitle">Título</h3>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="js/api.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

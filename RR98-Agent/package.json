@@ -1,0 +1,40 @@
+{
+  "name": "rr98-agent",
+  "version": "1.0.0",
+  "description": "Agente IA RR98 - Universal Intelligence Engine",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node index.js",
+    "setup": "node setup.js",
+    "monitor": "node monitoring/monitor.js",
+    "self-heal": "node engine/self-heal.js",
+    "audit": "node monitoring/monitor.js",
+    "protect": "node -e \"import('./engine/protection.js').then(m => m.protectionSystem.protectProject('.'))\"",
+    "github-sync": "node -e \"import('./engine/github-sync.js').then(m => m.gitHubSync.syncAll())\"",
+    "tax-report": "node -e \"import('./tax-system/index.js').then(m => console.log(JSON.stringify(m.taxSystem.resumo(), null, 2)))\"",
+    "all": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "axios": "^1.6.2",
+    "groq-sdk": "^0.5.0",
+    "jsonwebtoken": "^9.0.2",
+    "bcryptjs": "^2.4.3",
+    "better-sqlite3": "^9.4.3",
+    "node-cron": "^3.0.3",
+    "chalk": "^5.3.0",
+    "ora": "^8.0.1",
+    "inquirer": "^9.2.12",
+    "socket.io": "^4.7.2",
+    "node-fetch": "^3.3.2",
+    "cheerio": "^1.0.0-rc.12",
+    "chokidar": "^3.5.3",
+    "simple-git": "^3.22.0",
+    "fs-extra": "^11.1.1",
+    "glob": "^10.3.10"
+  }
+}
