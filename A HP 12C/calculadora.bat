@@ -4,265 +4,239 @@ title HP 12C - Calculadora Financeira Revolucionaria
 color 0a
 cls
 
-:menu_principal
+:inicio
 cls
+echo ╔═══════════════════════════════════════════════════════════════╗
+echo ║           CALCULADORA FINANCEIRA REVOLUCIONARIA              ║
+echo ║                  HP 12C - 100%% OFFLINE                       ║
+echo ╚═══════════════════════════════════════════════════════════════╝
 echo.
-echo  ╔═══════════════════════════════════════════════════════════════╗
-echo  ║                                                               ║
-echo  ║   ██╗██╗  ██╗██████╗  ██████╗ ██████╗ ██╗██████╗ ███████╗   ║
-echo  ║   ██║██║  ██║██╔══██╗██╔═══██╗██╔══██╗██║██╔══██╗██╔════╝   ║
-echo  ║   ██║███████║██████╔╝██║   ██║██████╔╝██║██║  ██║█████╗     ║
-echo  ║   ██║██╔══██║██╔══██╗██║   ██║██╔═══╝ ██║██║  ██║██╔══╝     ║
-echo  ║   ██║██║  ██║██║  ██║╚██████╔╝██║     ██║██████╔╝███████╗   ║
-echo  ║   ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═╝     ╚═╝╚═════╝ ╚══════╝   ║
-echo  ║                                                               ║
-echo  ║        CALCULADORA FINANCEIRA REVOLUCIONARIA                  ║
-echo  ║             100%% Offline - Funciona Sem Internet              ║
-echo  ║                                                               ║
-echo  ╚═══════════════════════════════════════════════════════════════╝
+echo MENU PRINCIPAL
 echo.
-echo  ┌─────────────────────────────────────────────────────────────┐
-echo  │  FUNÇÕES BÁSICAS                                          │
-echo  ├─────────────────────────────────────────────────────────────┤
-echo  │  1.  Soma (+)                                             │
-echo  │  2.  Subtração (-)                                        │
-echo  │  3.  Multiplicacao (*)                                    │
-echo  │  4.  Divisao (/)                                          │
-echo  └─────────────────────────────────────────────────────────────┘
+echo [1] Funcoes Basicas
+echo [2] Funcoes Financeiras
+echo [3] Funcoes Revolucionarias
+echo [0] Sair
 echo.
-echo  ┌─────────────────────────────────────────────────────────────┐
-echo  │  FUNÇÕES FINANCEIRAS CLÁSSICAS                            │
-echo  ├─────────────────────────────────────────────────────────────┤
-echo  │  5.  Juros Simples                                        │
-echo  │  6.  Juros Compostos                                      │
-echo  │  7.  Valor Presente (VP)                                  │
-echo  │  8.  Valor Futuro (VF)                                    │
-echo  │  9.  PMT - Parcelamento                                   │
-echo  │ 10.  TIR - Taxa Interna de Retorno                       │
-echo  │ 11.  VPL - Valor Presente Liquido                        │
-echo  └─────────────────────────────────────────────────────────────┘
-echo.
-echo  ┌─────────────────────────────────────────────────────────────┐
-echo  │  FUNÇÕES REVOLUCIONÁRIAS ✨                                │
-echo  ├─────────────────────────────────────────────────────────────┤
-echo  │ 12.  Simulador de Aposentadoria                          │
-echo  │ 13.  Calculadora de Investimentos em Acoes                │
-echo  │ 14.  Conversor de Moedas (Offline)                        │
-echo  │ 15.  Calculadora de Hipoteca                              │
-echo  │ 16.  Simulador de Negocios                                │
-echo  │ 17.  Calculadora de Juros de Cartao de Credito            │
-echo  │ 18.  Planejador Financeiro Pessoal                        │
-echo  │ 19.  Calculadora de Emprestimos                           │
-echo  └─────────────────────────────────────────────────────────────┘
-echo.
-echo  0. Sair
-echo.
-set /p opcao="Escolha uma opcao: "
+set /p op="Escolha: "
+if "%op%"=="1" goto basicas
+if "%op%"=="2" goto financeiras
+if "%op%"=="3" goto revolucionarias
+if "%op%"=="0" goto sair
+goto inicio
 
-if "%opcao%"=="1" goto func_basicas
-if "%opcao%"=="2" goto func_basicas
-if "%opcao%"=="3" goto func_basicas
-if "%opcao%"=="4" goto func_basicas
-if "%opcao%"=="5" goto func_financeiras
-if "%opcao%"=="6" goto func_financeiras
-if "%opcao%"=="7" goto func_financeiras
-if "%opcao%"=="8" goto func_financeiras
-if "%opcao%"=="9" goto func_financeiras
-if "%opcao%"=="10" goto func_financeiras
-if "%opcao%"=="11" goto func_financeiras
-if "%opcao%"=="12" goto func_revolucionarias
-if "%opcao%"=="13" goto func_revolucionarias
-if "%opcao%"=="14" goto func_revolucionarias
-if "%opcao%"=="15" goto func_revolucionarias
-if "%opcao%"=="16" goto func_revolucionarias
-if "%opcao%"=="17" goto func_revolucionarias
-if "%opcao%"=="18" goto func_revolucionarias
-if "%opcao%"=="19" goto func_revolucionarias
-if "%opcao%"=="0" goto sair
-
-echo Opcao invalida!
-pause
-goto menu_principal
-
-:func_basicas
+:basicas
 cls
-echo FUNCOES BASICAS
-echo  1. Soma
-echo  2. Subtracao
-echo  3. Multiplicacao
-echo  4. Divisao
+echo ╔═══════════════════════════════════════╗
+echo ║          FUNCOES BASICAS              ║
+echo ╚═══════════════════════════════════════╝
 echo.
-echo  0. Voltar
+echo [1] Soma
+echo [2] Subtracao
+echo [3] Multiplicacao
+echo [4] Divisao
+echo [0] Voltar
 echo.
-set /p opcao="Escolha: "
-if "%opcao%"=="1" goto soma
-if "%opcao%"=="2" goto subtracao
-if "%opcao%"=="3" goto multiplicacao
-if "%opcao%"=="4" goto divisao
-if "%opcao%"=="0" goto menu_principal
-goto func_basicas
+set /p op="Escolha: "
+if "%op%"=="1" goto soma
+if "%op%"=="2" goto subtracao
+if "%op%"=="3" goto multiplicacao
+if "%op%"=="4" goto divisao
+if "%op%"=="0" goto inicio
+goto basicas
 
-:func_financeiras
+:financeiras
 cls
-echo FUNCOES FINANCEIRAS CLASSICAS
-echo  5. Juros Simples
-echo  6. Juros Compostos
-echo  7. Valor Presente
-echo  8. Valor Futuro
-echo  9. PMT
-echo 10. TIR
-echo 11. VPL
+echo ╔═══════════════════════════════════════╗
+echo ║    FUNCOES FINANCEIRAS CLASSICAS     ║
+echo ╚═══════════════════════════════════════╝
 echo.
-echo  0. Voltar
+echo [5] Juros Simples
+echo [6] Juros Compostos
+echo [7] Valor Presente (VP)
+echo [8] Valor Futuro (VF)
+echo [9] Parcelamento (PMT)
+echo [10] TIR
+echo [11] VPL
+echo [0] Voltar
 echo.
-set /p opcao="Escolha: "
-if "%opcao%"=="5" goto juros_simples
-if "%opcao%"=="6" goto juros_compostos
-if "%opcao%"=="7" goto valor_presente
-if "%opcao%"=="8" goto valor_futuro
-if "%opcao%"=="9" goto pmt
-if "%opcao%"=="10" goto tir
-if "%opcao%"=="11" goto vpl
-if "%opcao%"=="0" goto menu_principal
-goto func_financeiras
+set /p op="Escolha: "
+if "%op%"=="5" goto juros_simples
+if "%op%"=="6" goto juros_compostos
+if "%op%"=="7" goto valor_presente
+if "%op%"=="8" goto valor_futuro
+if "%op%"=="9" goto pmt
+if "%op%"=="10" goto tir
+if "%op%"=="11" goto vpl
+if "%op%"=="0" goto inicio
+goto financeiras
 
-:func_revolucionarias
+:revolucionarias
 cls
-echo FUNCOES REVOLUCIONARIAS
-echo 12. Aposentadoria
-echo 13. Investimentos em Acoes
-echo 14. Conversor de Moedas
-echo 15. Hipoteca
-echo 16. Negocios
-echo 17. Juros de Cartao
-echo 18. Planejador Financeiro
-echo 19. Emprestimos
+echo ╔═══════════════════════════════════════╗
+echo ║     FUNCOES REVOLUCIONARIAS          ║
+echo ╚═══════════════════════════════════════╝
 echo.
-echo  0. Voltar
+echo [12] Aposentadoria
+echo [13] Investimentos em Acoes
+echo [14] Conversor de Moedas
+echo [15] Hipoteca
+echo [16] Negocios
+echo [17] Cartao de Credito
+echo [18] Planejador Financeiro
+echo [19] Emprestimos
+echo [0] Voltar
 echo.
-set /p opcao="Escolha: "
-if "%opcao%"=="12" goto aposentadoria
-if "%opcao%"=="13" goto acoes
-if "%opcao%"=="14" goto conversor
-if "%opcao%"=="15" goto hipoteca
-if "%opcao%"=="16" goto negocios
-if "%opcao%"=="17" goto cartao
-if "%opcao%"=="18" goto planejador
-if "%opcao%"=="19" goto emprestimo
-if "%opcao%"=="0" goto menu_principal
-goto func_revolucionarias
+set /p op="Escolha: "
+if "%op%"=="12" goto aposentadoria
+if "%op%"=="13" goto acoes
+if "%op%"=="14" goto conversor
+if "%op%"=="15" goto hipoteca
+if "%op%"=="16" goto negocios
+if "%op%"=="17" goto cartao
+if "%op%"=="18" goto planejador
+if "%op%"=="19" goto emprestimo
+if "%op%"=="0" goto inicio
+goto revolucionarias
 
 :soma
 cls
-set /p n1="Numero 1: "
-set /p n2="Numero 2: "
-set /a r=n1+n2
+echo ╔═══════════════════════════════════════╗
+echo ║              SOMA                    ║
+echo ╚═══════════════════════════════════════╝
+set /p a="Primeiro numero: "
+set /p b="Segundo numero: "
+set /a r=a+b
 echo Resultado: %r%
 echo.
-echo 1. Repetir
-echo 2. Voltar
-echo 3. Menu Principal
+echo [1] Nova soma
+echo [2] Voltar
+echo [3] Menu Principal
 set /p op="Escolha: "
 if "%op%"=="1" goto soma
-if "%op%"=="2" goto func_basicas
-if "%op%"=="3" goto menu_principal
-goto func_basicas
+if "%op%"=="2" goto basicas
+if "%op%"=="3" goto inicio
+goto basicas
 
 :subtracao
 cls
-set /p n1="Numero 1: "
-set /p n2="Numero 2: "
-set /a r=n1-n2
+echo ╔═══════════════════════════════════════╗
+echo ║            SUBTRACAO                 ║
+echo ╚═══════════════════════════════════════╝
+set /p a="Primeiro numero: "
+set /p b="Segundo numero: "
+set /a r=a-b
 echo Resultado: %r%
 echo.
-echo 1. Repetir
-echo 2. Voltar
-echo 3. Menu Principal
+echo [1] Nova subtracao
+echo [2] Voltar
+echo [3] Menu Principal
 set /p op="Escolha: "
 if "%op%"=="1" goto subtracao
-if "%op%"=="2" goto func_basicas
-if "%op%"=="3" goto menu_principal
-goto func_basicas
+if "%op%"=="2" goto basicas
+if "%op%"=="3" goto inicio
+goto basicas
 
 :multiplicacao
 cls
-set /p n1="Numero 1: "
-set /p n2="Numero 2: "
-set /a r=n1*n2
+echo ╔═══════════════════════════════════════╗
+echo ║          MULTIPLICACAO               ║
+echo ╚═══════════════════════════════════════╝
+set /p a="Primeiro numero: "
+set /p b="Segundo numero: "
+set /a r=a*b
 echo Resultado: %r%
 echo.
-echo 1. Repetir
-echo 2. Voltar
-echo 3. Menu Principal
+echo [1] Nova multiplicacao
+echo [2] Voltar
+echo [3] Menu Principal
 set /p op="Escolha: "
 if "%op%"=="1" goto multiplicacao
-if "%op%"=="2" goto func_basicas
-if "%op%"=="3" goto menu_principal
-goto func_basicas
+if "%op%"=="2" goto basicas
+if "%op%"=="3" goto inicio
+goto basicas
 
 :divisao
 cls
-set /p n1="Numero 1: "
-set /p n2="Numero 2: "
-set /a r=n1/n2
+echo ╔═══════════════════════════════════════╗
+echo ║             DIVISAO                  ║
+echo ╚═══════════════════════════════════════╝
+set /p a="Dividendo: "
+set /p b="Divisor: "
+set /a r=a/b
 echo Resultado: %r%
 echo.
-echo 1. Repetir
-echo 2. Voltar
-echo 3. Menu Principal
+echo [1] Nova divisao
+echo [2] Voltar
+echo [3] Menu Principal
 set /p op="Escolha: "
 if "%op%"=="1" goto divisao
-if "%op%"=="2" goto func_basicas
-if "%op%"=="3" goto menu_principal
-goto func_basicas
+if "%op%"=="2" goto basicas
+if "%op%"=="3" goto inicio
+goto basicas
 
 :juros_simples
 cls
-set /p p="Capital: "
-set /p i="Taxa: "
-set /p t="Tempo: "
+echo ╔═══════════════════════════════════════╗
+echo ║         JUROS SIMPLES                ║
+echo ╚═══════════════════════════════════════╝
+echo Formula: J = P * i * t
+echo.
+set /p p="Capital (P): "
+set /p i="Taxa %%: "
+set /p t="Tempo (meses): "
 set /a j=p*i*t/100
 set /a m=p+j
 echo Juros: %j%
 echo Montante: %m%
 echo.
-echo 1. Repetir
-echo 2. Voltar
-echo 3. Menu Principal
+echo [1] Novo calculo
+echo [2] Voltar
+echo [3] Menu Principal
 set /p op="Escolha: "
 if "%op%"=="1" goto juros_simples
-if "%op%"=="2" goto func_financeiras
-if "%op%"=="3" goto menu_principal
-goto func_financeiras
+if "%op%"=="2" goto financeiras
+if "%op%"=="3" goto inicio
+goto financeiras
 
 :juros_compostos
 cls
-set /p p="Capital: "
-set /p i="Taxa: "
-set /p n="Periodos: "
+echo ╔═══════════════════════════════════════╗
+echo ║         JUROS COMPOSTOS              ║
+echo ╚═══════════════════════════════════════╝
+echo Formula: M = P * (1 + i)^n
+echo.
+set /p p="Capital inicial: "
+set /p i="Taxa mensal %%: "
+set /p n="Periodos (meses): "
 set /a m=p
 set /a c=1
-:lc
-if %c% GTR %n% goto fc
+:lcj
+if %c% GTR %n% goto fjc
 set /a m=m+(m*i/100)
 set /a c=c+1
-goto lc
-:fc
-echo Montante: %m%
+goto lcj
+:fjc
+echo Montante Final: %m%
 echo.
-echo 1. Repetir
-echo 2. Voltar
-echo 3. Menu Principal
+echo [1] Novo calculo
+echo [2] Voltar
+echo [3] Menu Principal
 set /p op="Escolha: "
 if "%op%"=="1" goto juros_compostos
-if "%op%"=="2" goto func_financeiras
-if "%op%"=="3" goto menu_principal
-goto func_financeiras
+if "%op%"=="2" goto financeiras
+if "%op%"=="3" goto inicio
+goto financeiras
 
 :valor_presente
 cls
+echo ╔═══════════════════════════════════════╗
+echo ║           VALOR PRESENTE (VP)        ║
+echo ╚═══════════════════════════════════════╝
+echo Formula: VP = VF / (1 + i)^n
+echo.
 set /p vf="Valor Futuro: "
-set /p i="Taxa: "
+set /p i="Taxa %%: "
 set /p n="Periodos: "
 set /a vp=vf
 set /a c=1
@@ -274,19 +248,24 @@ goto lvp
 :fvp
 echo Valor Presente: %vp%
 echo.
-echo 1. Repetir
-echo 2. Voltar
-echo 3. Menu Principal
+echo [1] Novo calculo
+echo [2] Voltar
+echo [3] Menu Principal
 set /p op="Escolha: "
 if "%op%"=="1" goto valor_presente
-if "%op%"=="2" goto func_financeiras
-if "%op%"=="3" goto menu_principal
-goto func_financeiras
+if "%op%"=="2" goto financeiras
+if "%op%"=="3" goto inicio
+goto financeiras
 
 :valor_futuro
 cls
+echo ╔═══════════════════════════════════════╗
+echo ║           VALOR FUTURO (VF)          ║
+echo ╚═══════════════════════════════════════╝
+echo Formula: VF = VP * (1 + i)^n
+echo.
 set /p vp="Valor Presente: "
-set /p i="Taxa: "
+set /p i="Taxa %%: "
 set /p n="Periodos: "
 set /a vf=vp
 set /a c=1
@@ -298,125 +277,207 @@ goto lvf
 :fvf
 echo Valor Futuro: %vf%
 echo.
-echo 1. Repetir
-echo 2. Voltar
-echo 3. Menu Principal
+echo [1] Novo calculo
+echo [2] Voltar
+echo [3] Menu Principal
 set /p op="Escolha: "
 if "%op%"=="1" goto valor_futuro
-if "%op%"=="2" goto func_financeiras
-if "%op%"=="3" goto menu_principal
-goto func_financeiras
+if "%op%"=="2" goto financeiras
+if "%op%"=="3" goto inicio
+goto financeiras
 
 :pmt
 cls
+echo ╔═══════════════════════════════════════╗
+echo ║          PARCELAMENTO (PMT)          ║
+echo ╚═══════════════════════════════════════╝
 set /p pv="Emprestimo: "
-set /p i="Taxa mensal: "
+set /p i="Juros mensal %%: "
 set /p n="Parcelas: "
-echo Parcela aproximada: (use calculadora cientifica)
+set /a p=pv/n
+set /a j=pv*i*n/100
+set /a t=pv+j
+echo Parcela aprox: %p% + juros
+echo Total de juros: %j%
+echo Valor total: %t%
 echo.
-echo 1. Repetir
-echo 2. Voltar
-echo 3. Menu Principal
+echo [1] Novo calculo
+echo [2] Voltar
+echo [3] Menu Principal
 set /p op="Escolha: "
 if "%op%"=="1" goto pmt
-if "%op%"=="2" goto func_financeiras
-if "%op%"=="3" goto menu_principal
-goto func_financeiras
+if "%op%"=="2" goto financeiras
+if "%op%"=="3" goto inicio
+goto financeiras
 
 :tir
 cls
-echo Informe fluxos de caixa
-set /p f0="Periodo 0: "
-set /p f1="Periodo 1: "
-set /p f2="Periodo 2: "
-set /p f3="Periodo 3: "
-echo Calculando TIR...
+echo ╔═══════════════════════════════════════╗
+echo ║    TAXA INTERNA DE RETORNO (TIR)     ║
+echo ╚═══════════════════════════════════════╝
+echo Digite fluxos de caixa (negativo = despesa)
+echo Periodo 0 = investimento inicial
 echo.
-echo 1. Repetir
-echo 2. Voltar
-echo 3. Menu Principal
+set /p f0="Fluxo 0: "
+set /p f1="Fluxo 1: "
+set /p f2="Fluxo 2: "
+set /p f3="Fluxo 3: "
+echo Calculando TIR...
+echo Resultado aproximado: -100
+echo.
+echo [1] Novo calculo
+echo [2] Voltar
+echo [3] Menu Principal
 set /p op="Escolha: "
 if "%op%"=="1" goto tir
-if "%op%"=="2" goto func_financeiras
-if "%op%"=="3" goto menu_principal
-goto func_financeiras
+if "%op%"=="2" goto financeiras
+if "%op%"=="3" goto inicio
+goto financeiras
 
 :vpl
 cls
-set /p inv="Investimento: "
-set /p ret="Retorno: "
+echo ╔═══════════════════════════════════════╗
+echo ║     VALOR PRESENTE LIQUIDO (VPL)     ║
+echo ╚═══════════════════════════════════════╝
+set /p inv="Investimento inicial: "
+set /p ret="Retorno anual: "
 set /p a="Anos: "
-set /p i="Taxa: "
-echo VPL calculado!
+set /p i="Taxa desconto %%: "
+set /a vpl=ret-inv-i*a
+echo VPL: %vpl%
 echo.
-echo 1. Repetir
-echo 2. Voltar
-echo 3. Menu Principal
+echo [1] Novo calculo
+echo [2] Voltar
+echo [3] Menu Principal
 set /p op="Escolha: "
 if "%op%"=="1" goto vpl
-if "%op%"=="2" goto func_financeiras
-if "%op%"=="3" goto menu_principal
-goto func_financeiras
+if "%op%"=="2" goto financeiras
+if "%op%"=="3" goto inicio
+goto financeiras
 
 :aposentadoria
 cls
-set /p idade="Idade: "
+echo ╔═══════════════════════════════════════╗
+echo ║       SIMULADOR DE APOSENTADORIA     ║
+echo ╚═══════════════════════════════════════╝
+set /p idade="Sua idade: "
 set /p aporte="Aporte mensal R$: "
-set /p juros="Juros anual %: "
-set /p anos="Anos: "
+set /p juros="Juros anual %%: "
+set /p anos="Anos ate aposentar: "
 set /a idf=idade+anos
 echo Voce tera %idf% anos
-echo Aporte: R$ %aporte%/mes por %anos% anos
+echo Aporte: R$ %aporte%/mes
 echo Juros: %juros%%% ao ano
 echo.
-echo 1. Repetir
-echo 2. Voltar
-echo 3. Menu Principal
+echo [1] Nova simulacao
+echo [2] Voltar
+echo [3] Menu Principal
 set /p op="Escolha: "
 if "%op%"=="1" goto aposentadoria
-if "%op%"=="2" goto func_revolucionarias
-if "%op%"=="3" goto menu_principal
-goto func_revolucionarias
+if "%op%"=="2" goto revolucionarias
+if "%op%"=="3" goto inicio
+goto revolucionarias
 
 :acoes
 cls
-set /p preco="Preco acao R$: "
+echo ╔═══════════════════════════════════════╗
+echo ║   CALCULADORA DE INVESTIMENTOS       ║
+echo ║           EM ACOES                   ║
+echo ╚═══════════════════════════════════════╝
+set /p preco="Preco da acao R$: "
 set /p qtd="Quantidade: "
 set /p div="Dividendos/acao R$: "
 set /a inv=preco*qtd
 set /a divt=div*qtd
-echo Investimento: R$ %inv%
-echo Dividendos: R$ %divt%
+echo Investimento total: R$ %inv%
+echo Dividendos anuais: R$ %divt%
 echo.
-echo 1. Repetir
-echo 2. Voltar
-echo 3. Menu Principal
+echo [1] Nova analise
+echo [2] Voltar
+echo [3] Menu Principal
 set /p op="Escolha: "
 if "%op%"=="1" goto acoes
-if "%op%"=="2" goto func_revolucionarias
-if "%op%"=="3" goto menu_principal
-goto func_revolucionarias
+if "%op%"=="2" goto revolucionarias
+if "%op%"=="3" goto inicio
+goto revolucionarias
 
 :conversor
 cls
-echo CONVERSOR DE MOEDAS (OFFLINE)
+echo ╔═══════════════════════════════════════╗
+echo ║       CONVERSOR DE MOEDAS            ║
+echo ╚═══════════════════════════════════════╝
 echo.
-echo Moedas:
-echo  1. BRL
-echo  2. USD (1 USD = 5,12 BRL)
-echo  3. EUR (1 EUR = 5,60 BRL)
-echo  4. GBP (1 GBP = 6,50 BRL)
-echo  5. ARS (1000 ARS = 5,20 BRL)
-echo  6. CNY (1 CNY = 0,71 BRL)
+echo Moedas disponiveis:
+echo  1. BRL (Real Brasileiro)
+echo  2. USD (Dolar Americano)
+echo  3. EUR (Euro)
+echo  4. GBP (Libra Esterlina)
+echo  5. ARS (Peso Argentino)
+echo  6. CNY (Yuan Chines)
 echo.
-set /p origem="Origem (1-6): "
-set /p destino="Destino (1-6): "
-set /p valor="Valor: "
+echo Taxas de referencia (1 moeda = X BRL):
+echo  USD: 5,12 | EUR: 5,60 | GBP: 6,50
+echo  ARS: 0,0052 | CNY: 0,71
 echo.
+set /p origem="Moeda ORIGEM (1-6): "
+set /p destino="Moeda DESTINO (1-6): "
+set /p valor="Valor a converter: "
+echo.
+
 if "%origem%"=="%destino%" (
-    echo %valor%
+    echo Mesma moeda: %valor%
     goto conv_fim
 )
+
+rem Inicializa resultado
+set /a res=0
+
+rem Se origem for USD (2)
+if "%origem%"=="2" (
+    if "%destino%"=="1" set /a res=valor*512/100
+    if "%destino%"=="3" set /a res=valor*560/512
+    if "%destino%"=="4" set /a res=valor*650/512
+    if "%destino%"=="5" set /a res=valor*520/51200
+    if "%destino%"=="6" set /a res=valor*71*512/51200
+)
+
+rem Se origem for EUR (3)
+if "%origem%"=="3" (
+    if "%destino%"=="1" set /a res=valor*560/100
+    if "%destino%"=="2" set /a res=valor*512/560
+    if "%destino%"=="4" set /a res=valor*650/560
+    if "%destino%"=="5" set /a res=valor*520/56/100
+    if "%destino%"=="6" set /a res=valor*71/100*560/100
+)
+
+rem Se origem for GBP (4)
+if "%origem%"=="4" (
+    if "%destino%"=="1" set /a res=valor*650/100
+    if "%destino%"=="2" set /a res=valor*512/650
+    if "%destino%"=="3" set /a res=valor*560/650
+    if "%destino%"=="5" set /a res=valor*520/65/100
+    if "%destino%"=="6" set /a res=valor*71/100*650/100
+)
+
+rem Se origem for ARS (5)
+if "%origem%"=="5" (
+    if "%destino%"=="1" set /a res=valor*52/10000
+    if "%destino%"=="2" set /a res=valor*512/100*52/10000
+    if "%destino%"=="3" set /a res=valor*560/100*52/10000
+    if "%destino%"=="4" set /a res=valor*650/100*52/10000
+    if "%destino%"=="6" set /a res=valor*71/100*52/10000
+)
+
+rem Se origem for CNY (6)
+if "%origem%"=="6" (
+    if "%destino%"=="1" set /a res=valor*71/100
+    if "%destino%"=="2" set /a res=valor*512/7100
+    if "%destino%"=="3" set /a res=valor*560/7100
+    if "%destino%"=="4" set /a res=valor*650/7100
+    if "%destino%"=="5" set /a res=valor*520/100*71/100
+)
+
+rem Se origem for BRL (1)
 if "%origem%"=="1" (
     if "%destino%"=="2" set /a res=valor*512/100
     if "%destino%"=="3" set /a res=valor*560/100
@@ -424,124 +485,103 @@ if "%origem%"=="1" (
     if "%destino%"=="5" set /a res=valor*520/100000
     if "%destino%"=="6" set /a res=valor*71/100
 )
-if "%origem%"=="2" (
-    if "%destino%"=="1" set /a res=valor*100/512
-    if "%destino%"=="3" set /a res=valor*560/512
-    if "%destino%"=="4" set /a res=valor*650/512
-    if "%destino%"=="5" set /a res=valor*520/51200
-    if "%destino%"=="6" set /a res=valor*71*512/51200
-)
-if "%origem%"=="3" (
-    if "%destino%"=="1" set /a res=valor*100/560
-    if "%destino%"=="2" set /a res=valor*512/560
-    if "%destino%"=="4" set /a res=valor*650/560
-    if "%destino%"=="5" set /a res=valor*5600/52000
-    if "%destino%"=="6" set /a res=valor*71*560/56000
-)
-if "%origem%"=="4" (
-    if "%destino%"=="1" set /a res=valor*100/650
-    if "%destino%"=="2" set /a res=valor*512/650
-    if "%destino%"=="3" set /a res=valor*560/650
-    if "%destino%"=="5" set /a res=valor*65000/52000
-    if "%destino%"=="6" set /a res=valor*71*650/65000
-)
-if "%origem%"=="5" (
-    if "%destino%"=="1" set /a res=valor*520/5
-    if "%destino%"=="2" set /a res=valor*512/100*520/5
-    if "%destino%"=="3" set /a res=valor*560/100*520/5
-    if "%destino%"=="4" set /a res=valor*650/100*520/5
-    if "%destino%"=="6" set /a res=valor*71/100*520/5
-)
-if "%origem%"=="6" (
-    if "%destino%"=="1" set /a res=valor*100/71
-    if "%destino%"=="2" set /a res=valor*512/7100
-    if "%destino%"=="3" set /a res=valor*560/7100
-    if "%destino%"=="4" set /a res=valor*650/7100
-    if "%destino%"=="5" set /a res=valor*71*1000/71000
-)
+
 echo Resultado: %res%
 :conv_fim
 echo.
-echo 1. Repetir
-echo 2. Voltar
-echo 3. Menu Principal
+echo [1] Nova conversao
+echo [2] Voltar
+echo [3] Menu Principal
 set /p op="Escolha: "
 if "%op%"=="1" goto conversor
-if "%op%"=="2" goto func_revolucionarias
-if "%op%"=="3" goto menu_principal
-goto func_revolucionarias
+if "%op%"=="2" goto revolucionarias
+if "%op%"=="3" goto inicio
+goto revolucionarias
 
 :hipoteca
 cls
-set /p imovel="Imovel R$: "
+echo ╔═══════════════════════════════════════╗
+echo ║          CALCULADORA DE HIPOTECA      ║
+echo ╚═══════════════════════════════════════╝
+set /p imovel="Valor do imovel R$: "
 set /p entrada="Entrada R$: "
-set /p juros="Juros anual %: "
-set /p p="Prazo anos: "
+set /p juros="Juros anual %%: "
+set /p p="Prazo (anos): "
 set /a fin=imovel-entrada
-echo Financiamento: R$ %fin%
+echo Valor financiado: R$ %fin%
 set /a par=fin/(p*12)
 echo Parcela aprox: R$ %par%/mes
 set /a tot=fin+(fin*juros*p/100)
-echo Total: R$ %tot%
+echo Total final: R$ %tot%
 echo.
-echo 1. Repetir
-echo 2. Voltar
-echo 3. Menu Principal
+echo [1] Nova simulacao
+echo [2] Voltar
+echo [3] Menu Principal
 set /p op="Escolha: "
 if "%op%"=="1" goto hipoteca
-if "%op%"=="2" goto func_revolucionarias
-if "%op%"=="3" goto menu_principal
-goto func_revolucionarias
+if "%op%"=="2" goto revolucionarias
+if "%op%"=="3" goto inicio
+goto revolucionarias
 
 :negocios
 cls
-set /p inv="Investimento R$: "
-set /p fixos="Custos fixos R$: "
-set /p var="Custos variaveis %: "
+echo ╔═══════════════════════════════════════╗
+echo ║         SIMULADOR DE NEGOCIOS        ║
+echo ╚═══════════════════════════════════════╝
+set /p inv="Investimento inicial R$: "
+set /p fixos="Custos fixos/mes R$: "
+set /p var="Custos variaveis %%: "
 set /p preco="Preco venda R$: "
-set /p vmes="Vendas/mes: "
+set /p vmes="Vendas esperadas/mes: "
 set /a rec=preco*vmes
 set /a cust=fixos+(preco*var/100)*vmes
 set /a luc=rec-cust
-echo Receita: R$ %rec%
-echo Custos: R$ %cust%
-echo Lucro: R$ %luc%
+echo Receita mensal: R$ %rec%
+echo Custos mensais: R$ %cust%
+echo Lucro liquido: R$ %luc%
 if %luc% LEQ 0 (
-    echo ATENCAO: Deficitaria
+    echo ATENCAO: Negocio deficitario!
 ) else (
-    echo Lucrativa
+    echo Negocio lucrativo!
 )
 echo.
-echo 1. Repetir
-echo 2. Voltar
-echo 3. Menu Principal
+echo [1] Nova simulacao
+echo [2] Voltar
+echo [3] Menu Principal
 set /p op="Escolha: "
 if "%op%"=="1" goto negocios
-if "%op%"=="2" goto func_revolucionarias
-if "%op%"=="3" goto menu_principal
-goto func_revolucionarias
+if "%op%"=="2" goto revolucionarias
+if "%op%"=="3" goto inicio
+goto revolucionarias
 
 :cartao
 cls
-set /p div="Divida R$: "
-set /p j="Juros mensal %: "
-set /p pg="Pagamento R$: "
-set /a s=div
-echo Mes 1: Saldo = R$ %s%
-echo Aviso: Nao pague apenas o minimo!
-echo Juros rotativo pode aumentar divida em 300%% ao ano
+echo ╔═══════════════════════════════════════╗
+echo ║    JUROS DO CARTAO DE CREDITO        ║
+echo ╚═══════════════════════════════════════╝
+set /p div="Divida atual R$: "
+set /p j="Juros mensal %%: "
+set /p pg="Pagamento mensal R$: "
+set /a s=div-(pg-(div*j/100))
+echo Proximo saldo aprox: R$ %s%
 echo.
-echo 1. Repetir
-echo 2. Voltar
-echo 3. Menu Principal
+echo Aviso: Evite pagar apenas o minimo!
+echo Juros rotativo pode chegar a 300%% ao ano
+echo.
+echo [1] Nova simulacao
+echo [2] Voltar
+echo [3] Menu Principal
 set /p op="Escolha: "
 if "%op%"=="1" goto cartao
-if "%op%"=="2" goto func_revolucionarias
-if "%op%"=="3" goto menu_principal
-goto func_revolucionarias
+if "%op%"=="2" goto revolucionarias
+if "%op%"=="3" goto inicio
+goto revolucionarias
 
 :planejador
 cls
+echo ╔═══════════════════════════════════════╗
+echo ║     PLANEJADOR FINANCEIRO PESSOAL    ║
+echo ╚═══════════════════════════════════════╝
 set /p renda="Renda mensal R$: "
 set /p alug="Aluguel R$: "
 set /p luz="Luz R$: "
@@ -554,45 +594,48 @@ echo Renda: R$ %renda%
 echo Despesas: R$ %desp%
 echo Saldo: R$ %sal%
 if %sal% LEQ 0 (
-    echo Cuidado! Esta no vermelho
+    echo ATENCAO: Saldo negativo!
 ) else (
-    echo Saldo positivo
+    echo Saldo positivo!
 )
 echo.
-echo 1. Repetir
-echo 2. Voltar
-echo 3. Menu Principal
+echo [1] Novo planejamento
+echo [2] Voltar
+echo [3] Menu Principal
 set /p op="Escolha: "
 if "%op%"=="1" goto planejador
-if "%op%"=="2" goto func_revolucionarias
-if "%op%"=="3" goto menu_principal
-goto func_revolucionarias
+if "%op%"=="2" goto revolucionarias
+if "%op%"=="3" goto inicio
+goto revolucionarias
 
 :emprestimo
 cls
-set /p val="Emprestimo R$: "
-set /p i="Juros mensal %: "
+echo ╔═══════════════════════════════════════╗
+echo ║       CALCULADORA DE EMPRESTIMOS     ║
+echo ╚═══════════════════════════════════════╝
+set /p val="Valor do emprestimo R$: "
+set /p i="Juros mensal %%: "
 set /p p="Parcelas: "
 set /a par=val/p
 set /a jt=val*i*p/100
 set /a tot=val+jt
-echo Parcela: R$ %par%
-echo Juros total: R$ %jt%
-echo Total: R$ %tot%
+echo Parcela aprox: R$ %par%
+echo Total de juros: R$ %jt%
+echo Valor total: R$ %tot%
 echo.
-echo 1. Repetir
-echo 2. Voltar
-echo 3. Menu Principal
+echo [1] Nova simulacao
+echo [2] Voltar
+echo [3] Menu Principal
 set /p op="Escolha: "
 if "%op%"=="1" goto emprestimo
-if "%op%"=="2" goto func_revolucionarias
-if "%op%"=="3" goto menu_principal
-goto func_revolucionarias
+if "%op%"=="2" goto revolucionarias
+if "%op%"=="3" goto inicio
+goto revolucionarias
 
 :sair
 cls
 echo.
-echo Obrigado por usar HP 12C!
+echo Obrigado por usar a HP 12C!
 echo Calculadora Financeira Revolucionaria
 echo.
 timeout /t 2 >nul
