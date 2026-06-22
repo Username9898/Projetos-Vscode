@@ -532,46 +532,54 @@ set /p origem="Escolha a moeda de ORIGEM (1-6): "
 set /p destino="Escolha a moeda de DESTINO (1-6): "
 set /p valor="Digite o valor a converter: "
 echo.
-set /a resultado=0
-rem Origem BRL (1)
-if "%origem%"=="1" if "%destino%"=="2" set /a resultado=valor*512/100
-if "%origem%"=="1" if "%destino%"=="3" set /a resultado=valor*560/100
-if "%origem%"=="1" if "%destino%"=="4" set /a resultado=valor*650/100
-if "%origem%"=="1" if "%destino%"=="5" set /a resultado=valor*520/100000
-if "%origem%"=="1" if "%destino%"=="6" set /a resultado=valor*71/100
-rem Origem USD (2)
-if "%origem%"=="2" if "%destino%"=="1" set /a resultado=valor*100/512
-if "%origem%"=="2" if "%destino%"=="3" set /a resultado=valor*560/512
-if "%origem%"=="2" if "%destino%"=="4" set /a resultado=valor*650/512
-if "%origem%"=="2" if "%destino%"=="5" set /a resultado=valor*520/51200
-if "%origem%"=="2" if "%destino%"=="6" set /a resultado=valor*71*512/51200
-rem Origem EUR (3)
-if "%origem%"=="3" if "%destino%"=="1" set /a resultado=valor*100/560
-if "%origem%"=="3" if "%destino%"=="2" set /a resultado=valor*512/560
-if "%origem%"=="3" if "%destino%"=="4" set /a resultado=valor*650/560
-if "%origem%"=="3" if "%destino%"=="5" set /a resultado=valor*5600/52000
-if "%origem%"=="3" if "%destino%"=="6" set /a resultado=valor*71/100*560/100
-rem Origem GBP (4)
-if "%origem%"=="4" if "%destino%"=="1" set /a resultado=valor*100/650
-if "%origem%"=="4" if "%destino%"=="2" set /a resultado=valor*512/650
-if "%origem%"=="4" if "%destino%"=="3" set /a resultado=valor*560/650
-if "%origem%"=="4" if "%destino%"=="5" set /a resultado=valor*65000/52000
-if "%origem%"=="4" if "%destino%"=="6" set /a resultado=valor*71/100*650/100
-rem Origem ARS (5)
-if "%origem%"=="5" if "%destino%"=="1" set /a resultado=valor*520/5
-if "%origem%"=="5" if "%destino%"=="2" set /a resultado=valor*512/100*520/5
-if "%origem%"=="5" if "%destino%"=="3" set /a resultado=valor*560/100*520/5
-if "%origem%"=="5" if "%destino%"=="4" set /a resultado=valor*650/100*520/5
-if "%origem%"=="5" if "%destino%"=="6" set /a resultado=valor*71/100*520/5
-rem Origem CNY (6)
-if "%origem%"=="6" if "%destino%"=="1" set /a resultado=valor*100/71
-if "%origem%"=="6" if "%destino%"=="2" set /a resultado=valor*512/7100
-if "%origem%"=="6" if "%destino%"=="3" set /a resultado=valor*560/7100
-if "%origem%"=="6" if "%destino%"=="4" set /a resultado=valor*650/7100
-if "%origem%"=="6" if "%destino%"=="5" set /a resultado=valor*71/100*520/5
+if "%origem%"=="%destino%" (
+    echo Resultado: %valor% (moedas iguais)
+    goto conv_fim
+)
+if "%origem%"=="1" (
+    if "%destino%"=="2" set /a resultado=valor*512/100
+    if "%destino%"=="3" set /a resultado=valor*560/100
+    if "%destino%"=="4" set /a resultado=valor*650/100
+    if "%destino%"=="5" set /a resultado=valor*520/100000
+    if "%destino%"=="6" set /a resultado=valor*71/100
+)
+if "%origem%"=="2" (
+    if "%destino%"=="1" set /a resultado=valor*100/512
+    if "%destino%"=="3" set /a resultado=valor*560/512
+    if "%destino%"=="4" set /a resultado=valor*650/512
+    if "%destino%"=="5" set /a resultado=valor*520/51200
+    if "%destino%"=="6" set /a resultado=valor*71*512/51200
+)
+if "%origem%"=="3" (
+    if "%destino%"=="1" set /a resultado=valor*100/560
+    if "%destino%"=="2" set /a resultado=valor*512/560
+    if "%destino%"=="4" set /a resultado=valor*650/560
+    if "%destino%"=="5" set /a resultado=valor*5600/52000
+    if "%destino%"=="6" set /a resultado=valor*71/100*560/100
+)
+if "%origem%"=="4" (
+    if "%destino%"=="1" set /a resultado=valor*100/650
+    if "%destino%"=="2" set /a resultado=valor*512/650
+    if "%destino%"=="3" set /a resultado=valor*560/650
+    if "%destino%"=="5" set /a resultado=valor*65000/52000
+    if "%destino%"=="6" set /a resultado=valor*71/100*650/100
+)
+if "%origem%"=="5" (
+    if "%destino%"=="1" set /a resultado=valor*520/5
+    if "%destino%"=="2" set /a resultado=valor*512/100*520/5
+    if "%destino%"=="3" set /a resultado=valor*560/100*520/5
+    if "%destino%"=="4" set /a resultado=valor*650/100*520/5
+    if "%destino%"=="6" set /a resultado=valor*71/100*520/5
+)
+if "%origem%"=="6" (
+    if "%destino%"=="1" set /a resultado=valor*100/71
+    if "%destino%"=="2" set /a resultado=valor*512/7100
+    if "%destino%"=="3" set /a resultado=valor*560/7100
+    if "%destino%"=="4" set /a resultado=valor*650/7100
+)
 
-set /a resultado_int=resultado
-echo Resultado: %resultado_int% (aprox.)
+:conv_fim
+echo Resultado: %resultado% (aprox.)
 echo.
 echo 1. Fazer outra conversao
 echo 2. Voltar ao Menu de Funcoes Revolucionarias
