@@ -4,7 +4,7 @@ title HP 12C - Calculadora Financeira Revolucionaria
 color 0a
 cls
 
-:menu
+:menu_principal
 cls
 echo.
 echo  ╔═══════════════════════════════════════════════════════════════╗
@@ -61,10 +61,74 @@ echo  └───────────────────────�
 echo.
 set /p opcao="Escolha uma opcao: "
 
+if "%opcao%"=="1" goto func_basicas
+if "%opcao%"=="2" goto func_basicas
+if "%opcao%"=="3" goto func_basicas
+if "%opcao%"=="4" goto func_basicas
+if "%opcao%"=="5" goto func_financeiras
+if "%opcao%"=="6" goto func_financeiras
+if "%opcao%"=="7" goto func_financeiras
+if "%opcao%"=="8" goto func_financeiras
+if "%opcao%"=="9" goto func_financeiras
+if "%opcao%"=="10" goto func_financeiras
+if "%opcao%"=="11" goto func_financeiras
+if "%opcao%"=="12" goto func_revolucionarias
+if "%opcao%"=="13" goto func_revolucionarias
+if "%opcao%"=="14" goto func_revolucionarias
+if "%opcao%"=="15" goto func_revolucionarias
+if "%opcao%"=="16" goto func_revolucionarias
+if "%opcao%"=="17" goto func_revolucionarias
+if "%opcao%"=="18" goto func_revolucionarias
+if "%opcao%"=="19" goto func_revolucionarias
+if "%opcao%"=="0" goto sair
+
+echo Opcao invalida!
+pause
+goto menu_principal
+
+:func_basicas
+cls
+echo.
+echo ╔═══════════════════════════════════════╗
+echo ║          FUNCOES BASICAS              ║
+echo ╚═══════════════════════════════════════╝
+echo.
+echo  1. Soma (+)
+echo  2. Subtracao (-)
+echo  3. Multiplicacao (*)
+echo  4. Divisao (/)
+echo.
+echo  0. Voltar ao Menu Principal
+echo.
+set /p opcao="Escolha uma opcao: "
 if "%opcao%"=="1" goto soma
 if "%opcao%"=="2" goto subtracao
 if "%opcao%"=="3" goto multiplicacao
 if "%opcao%"=="4" goto divisao
+if "%opcao%"=="0" goto menu_principal
+
+echo Opcao invalida!
+pause
+goto func_basicas
+
+:func_financeiras
+cls
+echo.
+echo ╔═══════════════════════════════════════╗
+echo ║    FUNCOES FINANCEIRAS CLASSICAS     ║
+echo ╚═══════════════════════════════════════╝
+echo.
+echo  5. Juros Simples
+echo  6. Juros Compostos
+echo  7. Valor Presente (VP)
+echo  8. Valor Futuro (VF)
+echo  9. PMT - Parcelamento
+echo 10. TIR - Taxa Interna de Retorno
+echo 11. VPL - Valor Presente Liquido
+echo.
+echo  0. Voltar ao Menu Principal
+echo.
+set /p opcao="Escolha uma opcao: "
 if "%opcao%"=="5" goto juros_simples
 if "%opcao%"=="6" goto juros_compostos
 if "%opcao%"=="7" goto valor_presente
@@ -72,6 +136,31 @@ if "%opcao%"=="8" goto valor_futuro
 if "%opcao%"=="9" goto pmt
 if "%opcao%"=="10" goto tir
 if "%opcao%"=="11" goto vpl
+if "%opcao%"=="0" goto menu_principal
+
+echo Opcao invalida!
+pause
+goto func_financeiras
+
+:func_revolucionarias
+cls
+echo.
+echo ╔═══════════════════════════════════════╗
+echo ║     FUNCOES REVOLUCIONARIAS ✨        ║
+echo ╚═══════════════════════════════════════╝
+echo.
+echo 12. Simulador de Aposentadoria
+echo 13. Calculadora de Investimentos em Acoes
+echo 14. Conversor de Moedas (Offline)
+echo 15. Calculadora de Hipoteca
+echo 16. Simulador de Negocios
+echo 17. Calculadora de Juros de Cartao de Credito
+echo 18. Planejador Financeiro Pessoal
+echo 19. Calculadora de Emprestimos
+echo.
+echo  0. Voltar ao Menu Principal
+echo.
+set /p opcao="Escolha uma opcao: "
 if "%opcao%"=="12" goto aposentadoria
 if "%opcao%"=="13" goto acoes
 if "%opcao%"=="14" goto conversor
@@ -80,11 +169,11 @@ if "%opcao%"=="16" goto negocios
 if "%opcao%"=="17" goto cartao
 if "%opcao%"=="18" goto planejador
 if "%opcao%"=="19" goto emprestimo
-if "%opcao%"=="0" goto sair
+if "%opcao%"=="0" goto menu_principal
 
 echo Opcao invalida!
 pause
-goto menu
+goto func_revolucionarias
 
 :soma
 cls
@@ -97,8 +186,15 @@ set /a resultado=num1+num2
 echo.
 echo Resultado: %resultado%
 echo.
-pause
-goto menu
+echo 1. Fazer outro calculo de Soma
+echo 2. Voltar ao Menu de Funcoes Basicas
+echo 3. Voltar ao Menu Principal
+echo.
+set /p opcao="Escolha: "
+if "%opcao%"=="1" goto soma
+if "%opcao%"=="2" goto func_basicas
+if "%opcao%"=="3" goto menu_principal
+goto func_basicas
 
 :subtracao
 cls
@@ -111,8 +207,15 @@ set /a resultado=num1-num2
 echo.
 echo Resultado: %resultado%
 echo.
-pause
-goto menu
+echo 1. Fazer outra subtracao
+echo 2. Voltar ao Menu de Funcoes Basicas
+echo 3. Voltar ao Menu Principal
+echo.
+set /p opcao="Escolha: "
+if "%opcao%"=="1" goto subtracao
+if "%opcao%"=="2" goto func_basicas
+if "%opcao%"=="3" goto menu_principal
+goto func_basicas
 
 :multiplicacao
 cls
@@ -125,8 +228,15 @@ set /a resultado=num1*num2
 echo.
 echo Resultado: %resultado%
 echo.
-pause
-goto menu
+echo 1. Fazer outra multiplicacao
+echo 2. Voltar ao Menu de Funcoes Basicas
+echo 3. Voltar ao Menu Principal
+echo.
+set /p opcao="Escolha: "
+if "%opcao%"=="1" goto multiplicacao
+if "%opcao%"=="2" goto func_basicas
+if "%opcao%"=="3" goto menu_principal
+goto func_basicas
 
 :divisao
 cls
@@ -139,8 +249,15 @@ set /a resultado=num1/num2
 echo.
 echo Resultado: %resultado%
 echo.
-pause
-goto menu
+echo 1. Fazer outra divisao
+echo 2. Voltar ao Menu de Funcoes Basicas
+echo 3. Voltar ao Menu Principal
+echo.
+set /p opcao="Escolha: "
+if "%opcao%"=="1" goto divisao
+if "%opcao%"=="2" goto func_basicas
+if "%opcao%"=="3" goto menu_principal
+goto func_basicas
 
 :juros_simples
 cls
@@ -156,8 +273,15 @@ echo.
 echo Juros: %juros%
 echo Montante: %montante%
 echo.
-pause
-goto menu
+echo 1. Fazer outro calculo de Juros Simples
+echo 2. Voltar ao Menu de Funcoes Financeiras
+echo 3. Voltar ao Menu Principal
+echo.
+set /p opcao="Escolha: "
+if "%opcao%"=="1" goto juros_simples
+if "%opcao%"=="2" goto func_financeiras
+if "%opcao%"=="3" goto menu_principal
+goto func_financeiras
 
 :juros_compostos
 cls
@@ -180,8 +304,15 @@ goto loop_compostos
 echo.
 echo Montante Final: %montante%
 echo.
-pause
-goto menu
+echo 1. Fazer outro calculo de Juros Compostos
+echo 2. Voltar ao Menu de Funcoes Financeiras
+echo 3. Voltar ao Menu Principal
+echo.
+set /p opcao="Escolha: "
+if "%opcao%"=="1" goto juros_compostos
+if "%opcao%"=="2" goto func_financeiras
+if "%opcao%"=="3" goto menu_principal
+goto func_financeiras
 
 :valor_presente
 cls
@@ -204,8 +335,15 @@ goto loop_vp
 echo.
 echo Valor Presente: %vp%
 echo.
-pause
-goto menu
+echo 1. Fazer outro calculo de Valor Presente
+echo 2. Voltar ao Menu de Funcoes Financeiras
+echo 3. Voltar ao Menu Principal
+echo.
+set /p opcao="Escolha: "
+if "%opcao%"=="1" goto valor_presente
+if "%opcao%"=="2" goto func_financeiras
+if "%opcao%"=="3" goto menu_principal
+goto func_financeiras
 
 :valor_futuro
 cls
@@ -228,8 +366,15 @@ goto loop_vf
 echo.
 echo Valor Futuro: %vf%
 echo.
-pause
-goto menu
+echo 1. Fazer outro calculo de Valor Futuro
+echo 2. Voltar ao Menu de Funcoes Financeiras
+echo 3. Voltar ao Menu Principal
+echo.
+set /p opcao="Escolha: "
+if "%opcao%"=="1" goto valor_futuro
+if "%opcao%"=="2" goto func_financeiras
+if "%opcao%"=="3" goto menu_principal
+goto func_financeiras
 
 :pmt
 cls
@@ -243,8 +388,15 @@ echo.
 echo Valor da parcela aproximado: 
 echo (Use uma calculadora cientifica para precisao)
 echo.
-pause
-goto menu
+echo 1. Fazer outro calculo de Parcelamento
+echo 2. Voltar ao Menu de Funcoes Financeiras
+echo 3. Voltar ao Menu Principal
+echo.
+set /p opcao="Escolha: "
+if "%opcao%"=="1" goto pmt
+if "%opcao%"=="2" goto func_financeiras
+if "%opcao%"=="3" goto menu_principal
+goto func_financeiras
 
 :tir
 cls
@@ -262,8 +414,15 @@ set /p fc4="Fluxo de caixa periodo 3: "
 echo.
 echo Calculando TIR...
 echo.
-pause
-goto menu
+echo 1. Fazer outro calculo de TIR
+echo 2. Voltar ao Menu de Funcoes Financeiras
+echo 3. Voltar ao Menu Principal
+echo.
+set /p opcao="Escolha: "
+if "%opcao%"=="1" goto tir
+if "%opcao%"=="2" goto func_financeiras
+if "%opcao%"=="3" goto menu_principal
+goto func_financeiras
 
 :vpl
 cls
@@ -280,8 +439,15 @@ set /p taxa="Taxa de desconto %%: "
 echo.
 echo VPL calculado com sucesso!
 echo.
-pause
-goto menu
+echo 1. Fazer outro calculo de VPL
+echo 2. Voltar ao Menu de Funcoes Financeiras
+echo 3. Voltar ao Menu Principal
+echo.
+set /p opcao="Escolha: "
+if "%opcao%"=="1" goto vpl
+if "%opcao%"=="2" goto func_financeiras
+if "%opcao%"=="3" goto menu_principal
+goto func_financeiras
 
 :aposentadoria
 cls
@@ -305,8 +471,15 @@ echo a juros de %taxa_juros%%% ao ano
 echo.
 echo Voce estara pronto para uma aposentadoria tranquila!
 echo.
-pause
-goto menu
+echo 1. Fazer outra simulacao de aposentadoria
+echo 2. Voltar ao Menu de Funcoes Revolucionarias
+echo 3. Voltar ao Menu Principal
+echo.
+set /p opcao="Escolha: "
+if "%opcao%"=="1" goto aposentadoria
+if "%opcao%"=="2" goto func_revolucionarias
+if "%opcao%"=="3" goto menu_principal
+goto func_revolucionarias
 
 :acoes
 cls
@@ -330,8 +503,15 @@ echo.
 echo Rentabilidade anual: 
 echo (Dividendos / Investimento) * 100
 echo.
-pause
-goto menu
+echo 1. Fazer outra analise de investimento
+echo 2. Voltar ao Menu de Funcoes Revolucionarias
+echo 3. Voltar ao Menu Principal
+echo.
+set /p opcao="Escolha: "
+if "%opcao%"=="1" goto acoes
+if "%opcao%"=="2" goto func_revolucionarias
+if "%opcao%"=="3" goto menu_principal
+goto func_revolucionarias
 
 :conversor
 cls
@@ -358,8 +538,15 @@ if "%opcao%"=="4" set /a resultado=valor*520/100000
 if "%opcao%"=="5" set /a resultado=valor*71/100
 echo Resultado: %resultado% BRL (aprox.)
 echo.
-pause
-goto menu
+echo 1. Fazer outra conversao
+echo 2. Voltar ao Menu de Funcoes Revolucionarias
+echo 3. Voltar ao Menu Principal
+echo.
+set /p opcao="Escolha: "
+if "%opcao%"=="1" goto conversor
+if "%opcao%"=="2" goto func_revolucionarias
+if "%opcao%"=="3" goto menu_principal
+goto func_revolucionarias
 
 :hipoteca
 cls
@@ -386,8 +573,15 @@ echo Total pago no final:
 set /a total=financiamento+(financiamento*taxa_juros*anos/100)
 echo R$ %total%
 echo.
-pause
-goto menu
+echo 1. Fazer outra simulacao de hipoteca
+echo 2. Voltar ao Menu de Funcoes Revolucionarias
+echo 3. Voltar ao Menu Principal
+echo.
+set /p opcao="Escolha: "
+if "%opcao%"=="1" goto hipoteca
+if "%opcao%"=="2" goto func_revolucionarias
+if "%opcao%"=="3" goto menu_principal
+goto func_revolucionarias
 
 :negocios
 cls
@@ -419,8 +613,15 @@ if %lucro% LEQ 0 (
     echo ✓ Negocio lucrativo!
 )
 echo.
-pause
-goto menu
+echo 1. Fazer outra simulacao de negocio
+echo 2. Voltar ao Menu de Funcoes Revolucionarias
+echo 3. Voltar ao Menu Principal
+echo.
+set /p opcao="Escolha: "
+if "%opcao%"=="1" goto negocios
+if "%opcao%"=="2" goto func_revolucionarias
+if "%opcao%"=="3" goto menu_principal
+goto func_revolucionarias
 
 :cartao
 cls
@@ -444,8 +645,15 @@ echo.
 echo Aviso: Evite pagar apenas o minimo!
 echo O juros rotativo pode aumentar sua divida em ate 300%% ao ano
 echo.
-pause
-goto menu
+echo 1. Fazer outra simulacao de cartao
+echo 2. Voltar ao Menu de Funcoes Revolucionarias
+echo 3. Voltar ao Menu Principal
+echo.
+set /p opcao="Escolha: "
+if "%opcao%"=="1" goto cartao
+if "%opcao%"=="2" goto func_revolucionarias
+if "%opcao%"=="3" goto menu_principal
+goto func_revolucionarias
 
 :planejador
 cls
@@ -479,8 +687,15 @@ if %saldo% LEQ 0 (
     echo ✓ Voce tem um saldo positivo!
 )
 echo.
-pause
-goto menu
+echo 1. Fazer outro planejamento
+echo 2. Voltar ao Menu de Funcoes Revolucionarias
+echo 3. Voltar ao Menu Principal
+echo.
+set /p opcao="Escolha: "
+if "%opcao%"=="1" goto planejador
+if "%opcao%"=="2" goto func_revolucionarias
+if "%opcao%"=="3" goto menu_principal
+goto func_revolucionarias
 
 :emprestimo
 cls
@@ -503,8 +718,15 @@ echo Parcela aproximada: R$ %parcela%
 echo Total de juros: R$ %juros_total%
 echo Valor total: R$ %total%
 echo.
-pause
-goto menu
+echo 1. Fazer outra simulacao de emprestimo
+echo 2. Voltar ao Menu de Funcoes Revolucionarias
+echo 3. Voltar ao Menu Principal
+echo.
+set /p opcao="Escolha: "
+if "%opcao%"=="1" goto emprestimo
+if "%opcao%"=="2" goto func_revolucionarias
+if "%opcao%"=="3" goto menu_principal
+goto func_revolucionarias
 
 :sair
 cls
