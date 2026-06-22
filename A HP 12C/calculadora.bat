@@ -1,5 +1,4 @@
 @echo off
-setlocal enabledelayedexpansion
 chcp 65001 >nul
 title HP 12C - Calculadora Financeira Revolucionaria
 color 0a
@@ -351,42 +350,14 @@ echo.
 set /p opcao="Escolha a moeda de origem (1-5): "
 set /p valor="Digite o valor a converter: "
 echo.
-if "%opcao%"=="1" goto conv_usd
-if "%opcao%"=="2" goto conv_eur
-if "%opcao%"=="3" goto conv_gbp
-if "%opcao%"=="4" goto conv_ars
-if "%opcao%"=="5" goto conv_cny
-echo Opcao invalida!
-pause
-goto menu
-
-:conv_usd
-set /a resultado=valor*512/100
-echo %valor% USD = !resultado! BRL (aprox.)
-pause
-goto menu
-
-:conv_eur
-set /a resultado=valor*560/100
-echo %valor% EUR = !resultado! BRL (aprox.)
-pause
-goto menu
-
-:conv_gbp
-set /a resultado=valor*650/100
-echo %valor% GBP = !resultado! BRL (aprox.)
-pause
-goto menu
-
-:conv_ars
-set /a resultado=valor*520/100000
-echo %valor% ARS = !resultado! BRL (aprox.)
-pause
-goto menu
-
-:conv_cny
-set /a resultado=valor*71/100
-echo %valor% CNY = !resultado! BRL (aprox.)
+set /a resultado=0
+if "%opcao%"=="1" set /a resultado=valor*512/100
+if "%opcao%"=="2" set /a resultado=valor*560/100
+if "%opcao%"=="3" set /a resultado=valor*650/100
+if "%opcao%"=="4" set /a resultado=valor*520/100000
+if "%opcao%"=="5" set /a resultado=valor*71/100
+echo Resultado: %resultado% BRL (aprox.)
+echo.
 pause
 goto menu
 
