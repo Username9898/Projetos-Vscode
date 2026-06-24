@@ -257,8 +257,111 @@
     <script>
         const GITHUB_USERNAME = 'Username9898';
         
-        // Lista de projetos (auto-atualizada pelo script)
-        const PROJECTS = [];
+        // Lista de projetos (auto-atualizada pelo script + projetos padrão)
+        const DEFAULT_PROJECTS = [
+            {
+                id: 'dentarium-ai-enterprise',
+                name: 'Dentarium AI Enterprise',
+                description: 'Plataforma SaaS empresarial com IA para dashboards, OCR, CAD/CAM e analytics.',
+                url: 'https://github.com/Username9898/dentarium-ai-enterprise',
+                type: 'docker',
+                stars: 0,
+                forks: 0,
+                updated: '2024-01-01'
+            },
+            {
+                id: 'studyforge-ai',
+                name: 'StudyForge AI',
+                description: 'Criador inteligente de conteúdo educativo com IA gratuita.',
+                url: 'https://github.com/Username9898/studyforge-ai',
+                type: 'docker',
+                stars: 0,
+                forks: 0,
+                updated: '2024-01-01'
+            },
+            {
+                id: 'RR98-Agent',
+                name: 'RR98-Agent',
+                description: 'Agente de IA autônomo para automação e integração WhatsApp.',
+                url: 'https://github.com/Username9898/RR98-Agent',
+                type: 'node',
+                stars: 0,
+                forks: 0,
+                updated: '2024-01-01'
+            },
+            {
+                id: 'LicitaMaster',
+                name: 'LicitaMaster',
+                description: 'Automação de licitações e pregões eletrônicos com IA.',
+                url: 'https://github.com/Username9898/LicitaMaster',
+                type: 'python',
+                stars: 0,
+                forks: 0,
+                updated: '2024-01-01'
+            },
+            {
+                id: 'Fincare',
+                name: 'Fincare',
+                description: 'Sistema financeiro com dashboard e relatórios.',
+                url: 'https://github.com/Username9898/Fincare',
+                type: 'node',
+                stars: 0,
+                forks: 0,
+                updated: '2024-01-01'
+            },
+            {
+                id: 'StockPro',
+                name: 'StockPro',
+                description: 'Gestão de estoque e inventário inteligente.',
+                url: 'https://github.com/Username9898/StockPro',
+                type: 'node',
+                stars: 0,
+                forks: 0,
+                updated: '2024-01-01'
+            },
+            {
+                id: 'JobsBoard',
+                name: 'JobsBoard',
+                description: 'Portal de vagas de emprego com IA para matching.',
+                url: 'https://github.com/Username9898/JobsBoard',
+                type: 'node',
+                stars: 0,
+                forks: 0,
+                updated: '2024-01-01'
+            },
+            {
+                id: 'ShopLite',
+                name: 'ShopLite',
+                description: 'E-commerce completo e leve.',
+                url: 'https://github.com/Username9898/ShopLite',
+                type: 'node',
+                stars: 0,
+                forks: 0,
+                updated: '2024-01-01'
+            },
+            {
+                id: 'Kanbango',
+                name: 'Kanbango',
+                description: 'Kanban board para gerenciamento de projetos.',
+                url: 'https://github.com/Username9898/Kanbango',
+                type: 'node',
+                stars: 0,
+                forks: 0,
+                updated: '2024-01-01'
+            },
+            {
+                id: 'Projetos-Vscode',
+                name: 'Projetos Vscode',
+                description: 'Repositório central com todos os projetos.',
+                url: 'https://github.com/Username9898/Projetos-Vscode',
+                type: 'docker',
+                stars: 0,
+                forks: 0,
+                updated: '2024-01-01'
+            }
+        ];
+        
+        const PROJECTS = [...DEFAULT_PROJECTS];
         
         // Gerar arquivo .bat para Windows
         function generateBatFile(project) {
