@@ -1,0 +1,1 @@
+# LicitaMaster - Core Package

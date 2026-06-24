@@ -1,0 +1,55 @@
+DENTARIUM AI ENTERPRISE - LICENÇA PROPRIETÁRIA
+
+Copyright (c) 2025 Roberto Ribeiro
+Todos os direitos reservados.
+
+IDENTIFICAÇÃO DO TITULAR:
+- Nome: Roberto Ribeiro
+- Email: robertojn321@gmail.com
+- GitHub: https://github.com/Username9898
+- Projeto: https://github.com/Username9898/studyforge-ai
+
+---
+
+TERMOS DE LICENÇA
+
+Este software é propriedade exclusiva de Roberto Ribeiro, 
+protegido por leis de direitos autorais e tratados internacionais.
+
+1. USO NÃO-COMERCIAL (GRATUITO)
+   - Uso educacional e pesquisa: PERMITIDO
+   - Visualização do código-fonte: PERMITIDO
+   - Estudo individual: PERMITIDO
+   
+2. USO COMERCIAL (PAGO)
+   - Requer contrato comercial específico
+   - Participação de receita: 1% a 10% conforme faturamento
+   - Licença por hardware obrigatória
+   
+3. PROIBIÇÕES
+   - Uso comercial sem contrato: PROIBIDO
+   - Remoção de créditos: PROIBIDO
+   - Distribuição/revenda: PROIBIDO
+   - Reverse engineering: PROIBIDO
+   
+4. MULTAS
+   - Uso não autorizado: R$ 100.000,00 por instância + R$ 1.000,00/dia
+   - Remoção de créditos: R$ 25.000,00 + R$ 500,00/dia
+   - Violação contratual: 3x a 10x o royalty devido
+   
+5. CONTATO PARA COMERCIALIZAÇÃO
+   Email: robertojn321@gmail.com
+   GitHub: https://github.com/Username9898
+
+---
+
+AVISO LEGAL
+
+Este software é fornecido "como está" sem garantias de qualquer tipo.
+O titular não se responsabiliza por danos diretos ou indiretos.
+
+Uso não autorizado resultará em ações judiciais conforme legislação 
+brasileira (Lei 9.610/1998) e internacional (Convenção de Berna, DMCA).
+
+Última atualização: Janeiro 2025
+Versão: 1.0

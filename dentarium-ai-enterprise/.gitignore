@@ -1,0 +1,103 @@
+# Dependencies
+node_modules/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+.poetry/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+.env.production
+.env.development
+.env.test
+
+# Database
+*.db
+*.sqlite3
+postgres_data/
+duckdb_data/
+redis_data/
+
+# Build outputs
+dist/
+build/
+.next/
+out/
+*.egg-info/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+
+# OS generated files
+Thumbs.db
+.DS_Store
+
+# Docker
+.dockerignore
+
+# MinIO data
+minio_data/
+
+# Uploads
+temp/
+uploads/
+
+# MLflow
+mlruns/
+
+# Prometheus data
+prometheus_data/
+grafana_data/
+loki_data/
+ollama_models/
+redis_insight_data/
+
+# Airflow
+airflow/dags/__init__.py
+airflow/logs/
+airflow/plugins/
+
+# Backup files
+*.bak
+*.backup
+*.orig
+
+# SSL certificates
+*.pem
+*.key
+*.crt
+
+# Temporary files
+*.tmp
+*.temp
